@@ -5,19 +5,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "Artistas")
-public class Artist {
+@Table(name = "Musicas")
+public class Music {
     @Id
     @Column(name = "Id")
     private String id;
     @Column(name = "Nome")
     private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ArtistaId")
+    private Artist artist;
 }
