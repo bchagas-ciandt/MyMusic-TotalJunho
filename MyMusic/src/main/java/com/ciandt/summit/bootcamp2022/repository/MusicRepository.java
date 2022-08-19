@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface MusicRepository extends JpaRepository<Music, String> {
 
-    public List<Music> findByArtistaId(String id);
-    public List<Music> findByNomeContainingIgnoreCase(String nome);
+    public List<Music> findByArtistId(String id);
+    public List<Music> findByNameContainingIgnoreCase(String name);
     @Query("SELECT m FROM Music m JOIN Artist a on a.id = m.artist WHERE lower(a.name) like lower(concat('%', :name,'%')) or lower(m.name) like lower(concat('%', :name,'%')) ORDER BY a.name, m.name ASC")
     public List<Music> findByNameArtistOrNameMusic(@Param("name") String name);
 }
