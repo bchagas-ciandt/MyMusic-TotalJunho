@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.model;
+package com.ciandt.summit.bootcamp2022.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
