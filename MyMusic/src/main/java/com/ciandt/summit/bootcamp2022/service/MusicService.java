@@ -20,12 +20,14 @@ public class MusicService {
     private MusicRepository musicRepository;
 
     public List<Music> findMusicsByMusicNameOrArtistName(String filter) {
-        List<Music> listToReturn = musicRepository.findByNameArtistOrNameMusic(filter);
-        logger.info("Buscando músicas com o filtro: "+ filter);
         if (filter.length() < 3) {
             logger.error("Filtro com menos de 3 caracteres");
             throw new InvalidFilterException("Filtro com menos de 3 caracteres");
         }
+
+        List<Music> listToReturn = musicRepository.findByNameArtistOrNameMusic(filter);
+        logger.info("Buscando músicas com o filtro: "+ filter);
+
         if (listToReturn.isEmpty()) {
             logger.error("Lista vazia para o filtro do parametro");
             throw new EmptyListException("Não foi encontrada nenhuma música com o filtro: "+ filter);
