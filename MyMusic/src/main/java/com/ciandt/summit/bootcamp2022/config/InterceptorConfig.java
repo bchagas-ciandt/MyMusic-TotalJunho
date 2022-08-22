@@ -15,6 +15,10 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(interceptor)
+                .excludePathPatterns("/swagger-ui.html/**")
+                .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns("/v2/api-docs/**")
+                .excludePathPatterns("/webjars/**")
                 .addPathPatterns("/**");
     }
 }
