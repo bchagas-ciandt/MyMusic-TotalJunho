@@ -55,4 +55,14 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(EmptyListException.class)
+    public final ResponseEntity<ExceptionResponseMassage> handleEmptyListException(EmptyListException e,
+                                                                                   WebRequest request){
+        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false)
+        );
+        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.NO_CONTENT);
+    }
 }
