@@ -2,9 +2,11 @@ package com.ciandt.summit.bootcamp2022.config;
 
 import com.ciandt.summit.bootcamp2022.config.interceptor.Interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+@Configuration
 public class InterceptorConfig extends WebMvcConfigurationSupport {
 
     @Autowired
@@ -13,6 +15,6 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(interceptor)
-                .addPathPatterns("/api/v1/music");
+                .addPathPatterns("/**");
     }
 }
