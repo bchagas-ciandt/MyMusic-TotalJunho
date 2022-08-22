@@ -16,52 +16,60 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponseMassage> handleAllException(Exception e,
-                                                                          WebRequest request){
+                                                                             WebRequest request) {
         ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
                 new Date(),
                 e.getMessage(),
-                request.getDescription(false)
+                request.getDescription(false),
+                HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(UnauthorizedRequestException.class)
     public final ResponseEntity<ExceptionResponseMassage> handleUnauthorizedRequestException(UnauthorizedRequestException e,
-                                                                                       WebRequest request){
-       ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
-              new Date(),
-              e.getMessage(),
-              request.getDescription(false)
-       );
+                                                                                             WebRequest request) {
+        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.UNAUTHORIZED.value()
+        );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.UNAUTHORIZED);
     }
+
     @ExceptionHandler(InvalidFilterException.class)
     public final ResponseEntity<ExceptionResponseMassage> handleInvalidFilterException(InvalidFilterException e,
-                                                                                       WebRequest request){
+                                                                                       WebRequest request) {
         ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
                 new Date(),
                 e.getMessage(),
-                request.getDescription(false)
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
         );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(InvalidIdException.class)
     public final ResponseEntity<ExceptionResponseMassage> handleInvalidIdException(InvalidIdException e,
-                                                                                 WebRequest request){
+                                                                                   WebRequest request) {
         ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
                 new Date(),
                 e.getMessage(),
-                request.getDescription(false)
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
         );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(EmptyListException.class)
     public final ResponseEntity<ExceptionResponseMassage> handleEmptyListException(EmptyListException e,
-                                                                                   WebRequest request){
+                                                                                   WebRequest request) {
         ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
                 new Date(),
                 e.getMessage(),
-                request.getDescription(false)
+                request.getDescription(false),
+                HttpStatus.NO_CONTENT.value()
         );
         return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.NO_CONTENT);
     }

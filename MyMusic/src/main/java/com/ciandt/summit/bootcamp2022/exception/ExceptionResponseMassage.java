@@ -11,10 +11,13 @@ public class ExceptionResponseMassage implements Serializable {
 
     private String details;
 
-    public ExceptionResponseMassage(Date currentDate, String message, String details) {
+    private int statusCod;
+
+    public ExceptionResponseMassage(Date currentDate, String message, String details, int statusCod) {
         this.timestamp = currentDate;
         this.message = message;
         this.details = details;
+        this. statusCod = statusCod;
     }
 
     public ExceptionResponseMassage() {
