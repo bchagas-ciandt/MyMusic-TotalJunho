@@ -85,4 +85,37 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         );
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(PlaylistNotFoundException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handlePlaylistNotFoundException(PlaylistNotFoundException e,
+                                                                                       WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(PayloadInvalidException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handlePayloadInvalidException(PayloadInvalidException e,
+                                                                                           WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(MusicLimitReachedException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleMusicLimitReachedException(MusicLimitReachedException e,
+                                                                                          WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
 }
