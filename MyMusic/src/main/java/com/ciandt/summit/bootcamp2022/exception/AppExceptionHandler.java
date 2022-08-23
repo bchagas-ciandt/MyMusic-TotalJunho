@@ -15,62 +15,62 @@ import java.util.Date;
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponseMassage> handleAllException(Exception e,
+    public final ResponseEntity<ExceptionResponseMessage> handleAllException(Exception e,
                                                                              WebRequest request) {
-        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
-        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(UnauthorizedRequestException.class)
-    public final ResponseEntity<ExceptionResponseMassage> handleUnauthorizedRequestException(UnauthorizedRequestException e,
+    public final ResponseEntity<ExceptionResponseMessage> handleUnauthorizedRequestException(UnauthorizedRequestException e,
                                                                                              WebRequest request) {
-        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.UNAUTHORIZED.value()
         );
-        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(InvalidFilterException.class)
-    public final ResponseEntity<ExceptionResponseMassage> handleInvalidFilterException(InvalidFilterException e,
+    public final ResponseEntity<ExceptionResponseMessage> handleInvalidFilterException(InvalidFilterException e,
                                                                                        WebRequest request) {
-        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.BAD_REQUEST.value()
         );
-        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidIdException.class)
-    public final ResponseEntity<ExceptionResponseMassage> handleInvalidIdException(InvalidIdException e,
+    public final ResponseEntity<ExceptionResponseMessage> handleInvalidIdException(InvalidIdException e,
                                                                                    WebRequest request) {
-        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.BAD_REQUEST.value()
         );
-        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EmptyListException.class)
-    public final ResponseEntity<ExceptionResponseMassage> handleEmptyListException(EmptyListException e,
+    public final ResponseEntity<ExceptionResponseMessage> handleEmptyListException(EmptyListException e,
                                                                                    WebRequest request) {
-        ExceptionResponseMassage exceptionResponseMassage = new ExceptionResponseMassage(
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.NO_CONTENT.value()
         );
-        return new ResponseEntity<>(exceptionResponseMassage, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NO_CONTENT);
     }
 }

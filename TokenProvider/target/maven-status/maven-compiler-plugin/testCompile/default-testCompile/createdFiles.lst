@@ -1,0 +1,4 @@
+com/ciandt/token/provider/core/usecases/CreateAuthorizerUseCaseTests.class
+com/ciandt/token/provider/core/usecases/CreateTokenUseCaseTests.class
+com/ciandt/token/provider/services/EncryptServicesTests.class
+com/ciandt/token/provider/TokenProviderApplicationTests.class

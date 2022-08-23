@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.ciandt.token.provider.core.usecases.CreateAuthorizerUseCaseTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.276 s - in com.ciandt.token.provider.core.usecases.CreateAuthorizerUseCaseTests

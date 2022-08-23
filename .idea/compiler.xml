@@ -12,7 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="summit-bootcamp" target="1.8" />
+      <module name="summit-bootcamp" target="11" />
       <module name="token-provider" target="1.8" />
     </bytecodeTargetLevel>
   </component>

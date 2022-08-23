@@ -19,7 +19,7 @@ public class MusicController {
     private MusicService musicService;
 
     @GetMapping
-    public ResponseEntity findMusicsByMusicNameOrArtistName(@RequestParam(name = "filtro") String name) {
+    public ResponseEntity findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
 
         List<Music> musics = musicService.findMusicsByMusicNameOrArtistName(name);
 
