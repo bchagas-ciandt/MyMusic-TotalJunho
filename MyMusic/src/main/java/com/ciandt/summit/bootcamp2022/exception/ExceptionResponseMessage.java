@@ -11,13 +11,13 @@ public class ExceptionResponseMessage implements Serializable {
 
     private String details;
 
-    private int statusCod;
+    private int statusCode;
 
     public ExceptionResponseMessage(Date currentDate, String message, String details, int statusCod) {
         this.timestamp = currentDate;
         this.message = message;
         this.details = details;
-        this. statusCod = statusCod;
+        this.statusCode = statusCod;
     }
 
     public ExceptionResponseMessage() {
@@ -35,7 +35,7 @@ public class ExceptionResponseMessage implements Serializable {
         return details;
     }
 
-    public int getStatusCod() {
-        return statusCod;
+    public int getStatusCode() {
+        return statusCode;
     }
 }
