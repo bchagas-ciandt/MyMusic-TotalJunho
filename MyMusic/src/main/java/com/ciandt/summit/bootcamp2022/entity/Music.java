@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -13,7 +14,9 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "Musicas")
-public class Music {
+public class Music implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "Id")
     private String id;

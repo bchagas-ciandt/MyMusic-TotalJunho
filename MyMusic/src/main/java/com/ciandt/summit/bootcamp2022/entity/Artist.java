@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -16,7 +17,9 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "Artistas")
-public class Artist {
+public class Artist implements Serializable{
+
+    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "Id")
     private String id;
