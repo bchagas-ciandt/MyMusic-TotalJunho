@@ -1,6 +1,5 @@
 com/ciandt/summit/bootcamp2022/config/SqliteConfig.class
 com/ciandt/summit/bootcamp2022/exception/InvalidFilterException.class
-com/ciandt/summit/bootcamp2022/config/CacheConfig.class
 com/ciandt/summit/bootcamp2022/controller/MusicController.class
 com/ciandt/summit/bootcamp2022/config/interceptor/InterceptorReqBody.class
 com/ciandt/summit/bootcamp2022/config/interceptor/InterceptorReqBody$Data.class

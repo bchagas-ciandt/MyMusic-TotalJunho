@@ -20,7 +20,6 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
-    @Cacheable(value = "findMusicsByMusicNameOrArtistName")
     public List<Music> findMusicsByMusicNameOrArtistName(String filter) {
         if (filter.length() < 3) {
             logger.error("Filtro com menos de 3 caracteres");
