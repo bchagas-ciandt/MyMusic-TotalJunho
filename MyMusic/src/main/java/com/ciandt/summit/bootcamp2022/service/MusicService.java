@@ -7,6 +7,7 @@ import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
+    @Cacheable(value = "findMusicsByMusicNameOrArtistName")
     public List<Music> findMusicsByMusicNameOrArtistName(String filter) {
         if (filter.length() < 3) {
             logger.error("Filtro com menos de 3 caracteres");

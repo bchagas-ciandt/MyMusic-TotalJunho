@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class CacheConfig implements JCacheManagerCustomizer {
     @Override
     public void customize(CacheManager cacheManager) {
-        cacheManager.createCache("buscarMusicas", new MutableConfiguration<>()
+        cacheManager.createCache("findMusicsByMusicNameOrArtistName", new MutableConfiguration<>()
                 .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 10)))
                 .setStoreByValue(false)
                 .setStatisticsEnabled(true));

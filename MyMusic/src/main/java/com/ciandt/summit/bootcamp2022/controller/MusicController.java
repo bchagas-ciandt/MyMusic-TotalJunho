@@ -18,7 +18,7 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
-    @GetMapping(path = "buscarMusicas")
+    @GetMapping
     public ResponseEntity findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
 
         List<Music> musics = musicService.findMusicsByMusicNameOrArtistName(name);
