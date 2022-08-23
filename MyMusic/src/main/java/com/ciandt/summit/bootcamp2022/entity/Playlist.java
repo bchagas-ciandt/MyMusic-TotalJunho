@@ -1,8 +1,6 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +11,8 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Table(name = "Playlists")
 public class Playlist implements Serializable {
@@ -20,23 +20,15 @@ public class Playlist implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "PlaylistMusicas",
-            joinColumns = @JoinColumn(name = "Playlistid"),
-            inverseJoinColumns = @JoinColumn(name = "MusicaId"))
+            joinColumns = @JoinColumn(name = "Playlistid", referencedColumnName = "Id"),
+            inverseJoinColumns = @JoinColumn(name = "MusicaId", referencedColumnName = "Id"))
     @ToString.Exclude
-    private List<Music> musicas;
-
-    public Playlist() {
-        musicas = new ArrayList<>();
-    }
-
-    public Playlist(String id, List<Music> musicas) {
-        this.id = id;
-        this.musicas = new ArrayList<>();
-    }
+    private List<Music> musicas = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
