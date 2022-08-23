@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class MusicDoesntExisteException extends RuntimeException{
-    public MusicDoesntExisteException(String message) {
+public class PlaylistDoesnotExistException extends RuntimeException{
+    public PlaylistDoesnotExistException(String message) {
         super(message);
     }
 }
