@@ -6,11 +6,11 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/CacheConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Artist.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SqlDialect.java
-/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/ExceptionResponseMassage.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/SummitBootcampApplication.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/DbConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/repository/MusicRepository.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/UnauthorizedRequestException.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/ExceptionResponseMessage.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/InterceptorReqBody.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/MusicService.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/Interceptor.java
