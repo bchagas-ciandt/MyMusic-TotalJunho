@@ -73,4 +73,16 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         );
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NO_CONTENT);
     }
+
+    @ExceptionHandler(MusicNotFoundException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleMusicNotFoundException(MusicNotFoundException e,
+                                                                                   WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
 }

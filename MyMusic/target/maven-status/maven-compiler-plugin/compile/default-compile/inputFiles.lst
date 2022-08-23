@@ -3,8 +3,10 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/AppExceptionHandler.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Music.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/InterceptorConfig.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/PlaylistController.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Artist.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Playlist.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/PlaylistService.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SqlDialect.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/SummitBootcampApplication.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/DbConfig.java
@@ -12,7 +14,10 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/UnauthorizedRequestException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/ExceptionResponseMessage.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/InterceptorReqBody.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/repository/PlaylistRepository.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/MusicService.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/Interceptor.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/MusicNotFoundException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidFilterException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/MusicController.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/DTO/PlaylistReqBody.java
