@@ -4,6 +4,7 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Music.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/InterceptorConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Artist.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Playlist.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SqlDialect.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/SummitBootcampApplication.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/DbConfig.java
