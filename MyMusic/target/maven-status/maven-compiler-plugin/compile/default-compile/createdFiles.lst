@@ -17,3 +17,4 @@ com/ciandt/summit/bootcamp2022/entity/Music.class
 com/ciandt/summit/bootcamp2022/config/interceptor/Interceptor.class
 com/ciandt/summit/bootcamp2022/service/MusicService.class
 com/ciandt/summit/bootcamp2022/config/DbConfig.class
+com/ciandt/summit/bootcamp2022/entity/Playlist.class
