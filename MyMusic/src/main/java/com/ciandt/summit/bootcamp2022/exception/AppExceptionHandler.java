@@ -74,33 +74,9 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NO_CONTENT);
     }
 
-    @ExceptionHandler(MusicDoesnotExisteException.class)
-    public final ResponseEntity<ExceptionResponseMessage> handleMusicDoesnotExistException(MusicDoesnotExisteException e,
+    @ExceptionHandler(MusicNotFoundException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleMusicNotFoundException(MusicNotFoundException e,
                                                                                    WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
-        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(PlaylistDoesnotExistException.class)
-    public final ResponseEntity<ExceptionResponseMessage> handlePlaylistDoesnotExistException(PlaylistDoesnotExistException e,
-                                                                                           WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
-        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(MusicLimitReachedException.class)
-    public final ResponseEntity<ExceptionResponseMessage> handleMusicLimitReachedException(MusicLimitReachedException e,
-                                                                                              WebRequest request) {
         ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
