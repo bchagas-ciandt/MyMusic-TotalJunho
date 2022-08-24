@@ -1,7 +1,10 @@
 package com.ciandt.summit.bootcamp2022.exception;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -117,5 +120,28 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.BAD_REQUEST.value()
         );
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                "Formato JSON inválido, consultar documentação",
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+
+        return new ResponseEntity(exceptionResponseMessage, headers, status);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return this.handleExceptionInternal(ex, (Object)null, headers, status, request);
     }
 }

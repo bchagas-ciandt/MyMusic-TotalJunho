@@ -1,8 +1,11 @@
 package com.ciandt.summit.bootcamp2022.exception;
 
+import lombok.Builder;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Builder
 public class ExceptionResponseMessage implements Serializable {
 
     private Date timestamp;
