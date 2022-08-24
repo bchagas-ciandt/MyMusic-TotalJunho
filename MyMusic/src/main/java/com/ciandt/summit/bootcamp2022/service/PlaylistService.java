@@ -1,6 +1,6 @@
 package com.ciandt.summit.bootcamp2022.service;
 
-import com.ciandt.summit.bootcamp2022.DTO.PlaylistReqBody;
+import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
@@ -28,7 +28,7 @@ public class PlaylistService {
     @Autowired
     private MusicRepository musicRepository;
 
-    public Playlist addMusicToPlaylist(String playlistId, PlaylistReqBody musics) {
+    public Playlist addMusicToPlaylist(String playlistId, ObjectDTO musics) {
         if (playlistId.equals(null) || playlistId == " ") {
             logger.error("Id nulo ou em branco");
             throw new InvalidIdException("Deve ser passado um ID válido");
@@ -56,11 +56,22 @@ public class PlaylistService {
             }
         }
 
+        logger.info("Salvando playlist no banco de dados");
+        playlistRepository.save(playlist.get());
+
         logger.info("retornando playlist com sucesso!");
-        return playlistRepository.save(playlist.get());
+        return playlistRepository.findById(playlistId).get();
     }
 
-    private void payLoadValidation(PlaylistReqBody musics) {
+    public Playlist findById(String id) {
+        if (id.equals(null) || id == " ") {
+            logger.error("Id nulo ou em branco");
+            throw new InvalidIdException("Deve ser passado um ID válido");
+        }
+        return playlistRepository.findById(id).get();
+    }
+
+    private void payLoadValidation(ObjectDTO musics) {
 
         for (Music music : musics.getData()) {
             Music musicReturn = musicRepository

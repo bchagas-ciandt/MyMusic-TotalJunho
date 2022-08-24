@@ -1,11 +1,12 @@
 com/ciandt/summit/bootcamp2022/exception/InvalidFilterException.class
 com/ciandt/summit/bootcamp2022/controller/MusicController.class
+com/ciandt/summit/bootcamp2022/DTO/ObjectDTO.class
 com/ciandt/summit/bootcamp2022/service/PlaylistService.class
 com/ciandt/summit/bootcamp2022/exception/AppExceptionHandler.class
 com/ciandt/summit/bootcamp2022/exception/InvalidIdException.class
 com/ciandt/summit/bootcamp2022/SummitBootcampApplication.class
 com/ciandt/summit/bootcamp2022/entity/Artist.class
-com/ciandt/summit/bootcamp2022/DTO/PlaylistReqBody.class
+com/ciandt/summit/bootcamp2022/DTO/ObjectDTO$ObjectDTOBuilder.class
 com/ciandt/summit/bootcamp2022/exception/EmptyListException.class
 com/ciandt/summit/bootcamp2022/repository/PlaylistRepository.class
 com/ciandt/summit/bootcamp2022/exception/MusicLimitReachedException.class

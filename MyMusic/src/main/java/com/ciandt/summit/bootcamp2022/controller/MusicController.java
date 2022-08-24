@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
+import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,11 @@ public class MusicController {
     private MusicService musicService;
 
     @GetMapping
-    public ResponseEntity findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
+    public ResponseEntity<ObjectDTO> findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
 
-        List<Music> musics = musicService.findMusicsByMusicNameOrArtistName(name);
+        ObjectDTO objectDTO = musicService.findMusicsByMusicNameOrArtistName(name);
 
-        return ResponseEntity.ok(musics);
+        return ResponseEntity.ok(objectDTO);
 
     }
 
