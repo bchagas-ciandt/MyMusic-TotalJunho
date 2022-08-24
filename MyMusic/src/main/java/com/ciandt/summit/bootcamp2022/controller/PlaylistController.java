@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/playlists")
 public class PlaylistController {
@@ -20,8 +22,13 @@ public class PlaylistController {
         return ResponseEntity.ok(playlist);
     }
 
-    @GetMapping(path = "{playlistId}/musicas")
+    @GetMapping(path = "{playlistId}")
     public ResponseEntity<Playlist> findPlaylistById(@PathVariable String playlistId) {
         return ResponseEntity.ok(playlistService.findById(playlistId));
+    }
+
+    @GetMapping(path = "findAll")
+    public ResponseEntity<List<Playlist>> findAll() {
+        return ResponseEntity.ok(playlistService.findAll());
     }
 }

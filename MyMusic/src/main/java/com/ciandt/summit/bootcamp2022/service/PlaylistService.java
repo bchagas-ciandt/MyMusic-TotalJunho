@@ -71,6 +71,10 @@ public class PlaylistService {
         return playlistRepository.findById(id).get();
     }
 
+    public List<Playlist> findAll() {
+        return playlistRepository.findAll();
+    }
+
     private void payLoadValidation(ObjectDTO musics) {
 
         for (Music music : musics.getData()) {
