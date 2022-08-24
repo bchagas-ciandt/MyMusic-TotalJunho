@@ -1,12 +1,8 @@
 
 <center>
-<img src="src/assets/toReadme/mymusic.png" >
+<img src="src/assets/toReadme/mymusic.png"width="42" height="42" >
 </center>
 
-<center>
-<img src="src/assets/toReadme/music-head-phones.gif">
-
-</center>
 
 
 <center><h2>My Music Julho 2022</h2>   </center>
