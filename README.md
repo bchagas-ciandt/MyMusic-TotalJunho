@@ -1,10 +1,10 @@
 
 <center>
-<img src="MyMusic/src/assets/toReadme/mymusic.png" >
+<img src="src/assets/toReadme/mymusic.png" >
 </center>
 
 <center>
-<img src="MyMusic/src/assets/toReadme/music-head-phones.gif7">
+<img src="src/assets/toReadme/music-head-phones.gif">
 
 </center>
 
