@@ -49,7 +49,7 @@ Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a me
 
 <h3> Banco de Dados </h3>
 
-Foi estabelecido que o o SGBD seria o SQLite e disponibilizado ao grupo uma estrutura inicial com uma base de dados pré-definida e populada, a qual deveria ser mantida com a seguinte modelagem:
+Foi estabelecido que o SGBD seria o SQLite e disponibilizado ao grupo uma estrutura inicial com uma base de dados pré-definida e populada, a qual deveria ser mantida com a seguinte modelagem:
 <div align="center"><img src="https://i.imgur.com/yfMGrur.png" title="source:modelagem imgur" /></div>
 
 <h3> Autenticação </h3>
