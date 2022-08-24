@@ -2,25 +2,25 @@
 
 <div align="center"><img src="https://glamrap.pl/wp-content/uploads/2019/04/mymusic_logo.jpg" title="source:my music" /></div>
 
-<div align="center"><h1>My Music Julho 2022</h1>  </div>
+<div align="center"><h1>My Music Junho 2022</h1>  </div>
 <div align="center"><h2> CI&Ters Team </h2>   </div>
 
-<h3> Sobre o projeto </h3>
+<h3> Sobre o Projeto </h3>
 
 O MyMusic API é uma aplicação responsável por gerenciar as musicas favoritas do usuário. 
 E foi desenvolvida para aplicar o conteúdo estudado no Bootcamp Java Junho 2022 da CI&T. 
-O grupo CI&Ters Team teve como desafio desenvolver funcionalidades para refatorar uma aplicação legada utilizando o mesmo banco de dados.
+O grupo intitulado CI&Ters Team teve como desafio desenvolver funcionalidades para refatorar uma aplicação legada utilizando o mesmo banco de dados.
 
 <h3> Arquitetura </h3>
 
-Foi eleito pelo grupo o Padrão de Camadas como arquitetura. Por ser uma das mais conhecidas e aplicadas na construção de softwares, a Arquitetura em Camadas foi uma escolha consensual na equipe.
+Foi eleito pelo grupo o Padrão de Camadas para a arquitetura. Por ser uma das mais conhecidas e aplicadas na construção de softwares, a Arquitetura em Camadas foi uma escolha consensual na equipe.
 Neste modelo a organização das responsabilidades fica separada por seu propósito, o que é chamado de camada.
 
 <div align="center"><img src="https://1.bp.blogspot.com/-rETQcIDxSk8/XYRNiAc886I/AAAAAAAAA-I/EQv8YL_7BmAlHe29teIvZKsjO7PdAzGowCLcBGAsYHQ/s1600/layers.png" title="source:Padrão de Camadas" /></div>
 
 <h3> Versionamento de Código </h3>
 
-Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a metodologia de versionamento adotada foi o Git Flow. Deste modo, o fluxo de trabalho se deu com duas branches principais, a Main e a Developer, que eram permanentes, e com as Features, que eram branches que existiam para o desenvolvimento das taskes e eram encerradas após o merge com a Developer. A Developer, por sua vez, era mergeada à Main após concluída a funcionalidade.
+Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a metodologia de versionamento adotada foi o Git Flow. Deste modo, o fluxo de trabalho se deu com duas branches principais, a Main e a Developer, que eram permanentes, e com as Features, que eram branches que existiam para o desenvolvimento das taskes e encerradas após o merge com a Developer. A Developer, por sua vez, era mergeada à Main após concluída a funcionalidade.
 
 <h3> Tecnologias e Ferramentas </h3>
 
