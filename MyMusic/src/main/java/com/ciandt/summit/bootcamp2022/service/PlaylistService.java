@@ -5,6 +5,8 @@ import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
 import com.ciandt.summit.bootcamp2022.exception.MusicNotFoundException;
+import com.ciandt.summit.bootcamp2022.exception.PayloadInvalidException;
+import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
 import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import org.slf4j.Logger;
@@ -12,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,19 +33,46 @@ public class PlaylistService {
             throw new InvalidIdException("Deve ser passado um ID válido");
         }
 
-        logger.info("buscando playlist por id");
-        Optional<Playlist> playlist = Optional.ofNullable(playlistRepository.findById(playlistId).orElseThrow(() -> new InvalidIdException("Playlist com esse ID não existe")));
-
-        for (Music music : musics.getData()) {
-            if (!musicRepository.existsById(music.getId())) {
-                logger.error("musica não existe, lançando exceção");
-                throw new MusicNotFoundException("Música não existe");
-            }
+        if (musics == null) {
+            throw new PayloadInvalidException("JSON Body incorreto: consulte documentação");
         }
+
+        logger.info("buscando playlist por id");
+        Optional<Playlist> playlist = Optional.ofNullable(playlistRepository
+                .findById(playlistId)
+                .orElseThrow(() -> new PlaylistNotFoundException("Playlist com esse ID não existe")));
+
+        payLoadValidation(musics);
+
         logger.info("musicas adicionada na playlist");
         playlist.get().getMusicas().addAll(musics.getData());
 
         logger.info("retornando playlist com sucesso!");
         return playlist.get();
+    }
+
+    private void payLoadValidation(PlaylistReqBody musics) {
+
+        for (Music music : musics.getData()) {
+            Music musicReturn = musicRepository
+                    .findById(music.getId())
+                    .orElseThrow(() -> new PayloadInvalidException("Payload incorreto: consultar documentação"));
+            if (!musicRepository.existsById(music.getId())) {
+                throw new MusicNotFoundException("Música não existe");
+            }
+            if (!music.getId().equals(musicReturn.getId()))
+            if (!music.getName().equals(musicReturn.getName())) {
+                logger.error("nome da música passado de forma incorreta");
+                throw new PayloadInvalidException("Payload incorreto: nome da música passado de forma incorreta");
+            }
+            if (!music.getArtist().getId().equals(musicReturn.getArtist().getId())) {
+                logger.error("id do artista passado de forma incorreta");
+                throw new PayloadInvalidException("Payload incorreto: id do artista passado de forma incorreta");
+            }
+            if (!music.getArtist().getName().equals(musicReturn.getArtist().getName())) {
+                logger.error("nome do artista passado de forma incorreta");
+                throw new PayloadInvalidException("Payload incorreto: nome do artista passado de forma incorreta");
+            }
+        }
     }
 }
