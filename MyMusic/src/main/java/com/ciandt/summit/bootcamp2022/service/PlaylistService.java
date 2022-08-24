@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,7 +33,6 @@ public class PlaylistService {
             logger.error("Id nulo ou em branco");
             throw new InvalidIdException("Deve ser passado um ID válido");
         }
-
         if (musics == null) {
             throw new PayloadInvalidException("JSON Body incorreto: consulte documentação");
         }
@@ -44,11 +44,20 @@ public class PlaylistService {
 
         payLoadValidation(musics);
 
-        logger.info("musicas adicionada na playlist");
-        playlist.get().getMusicas().addAll(musics.getData());
+        List<Music> playlistMusics = playlist.get().getMusicas();
+
+        logger.info("adicionando musicas na playlist");
+        for (Music music : musics.getData()) {
+            if (!playlistMusics.contains(music)) {
+                logger.info("Música adicionada na playlist");
+                playlist.get().getMusicas().add(music);
+            } else {
+                logger.info("Música já existe na playlost");
+            }
+        }
 
         logger.info("retornando playlist com sucesso!");
-        return playlist.get();
+        return playlistRepository.save(playlist.get());
     }
 
     private void payLoadValidation(PlaylistReqBody musics) {

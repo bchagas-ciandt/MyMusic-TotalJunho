@@ -27,7 +27,6 @@ public class Playlist implements Serializable {
     @JoinTable(name = "PlaylistMusicas",
             joinColumns = @JoinColumn(name = "Playlistid", referencedColumnName = "Id"),
             inverseJoinColumns = @JoinColumn(name = "MusicaId", referencedColumnName = "Id"))
-    @ToString.Exclude
     private List<Music> musicas = new ArrayList<>();
 
     @Override
