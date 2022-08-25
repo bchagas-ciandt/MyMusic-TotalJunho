@@ -48,6 +48,7 @@ Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a me
 * JPA/Hibernate;
 * JUnit;
 * Mockito;
+* ArchUnit;
 * Pitest;
 * JaCoCo;
 * SQLite;
@@ -93,6 +94,6 @@ A gestão do projeto segiu os seguintes ritos:
 
 * Bruno Gabriel de Oliveira Chagas @bchagas;  **[*Bruno - GitHub*](https://github.com/bchagas99)**
 * Elane Garcia de Brito @elanegarcia; **[*Elane - GitHub*](https://github.com/garciaelane)**
-* Eliabe Dafne Vieira de Oliveira @eliabe; **[*Eliabe-  GitHub*](https://github.com/eliabe-ciandt)**
+* Eliabe Dafne Vieira de Oliveira @eliabe; **[*Eliabe -  GitHub*](https://github.com/eliabe-ciandt)**
 * Jehan Lucas Vieira e Silva @jehan; **[*Jehan - GitHub*](https://github.com/Jehanlucas)**
 * Jezielle de Fátima Farias da Cunha @jezielle. **[*Jezielle - GitHub*](https://github.com/jezielleciandt)**
