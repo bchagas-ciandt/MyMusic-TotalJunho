@@ -73,14 +73,14 @@ public class MusicServiceTest {
 
 
 
-//    @Test
-//    public void findMusicsByMusicNameOrArtistName(){
-//        String filter = "The Beatles";
-//        List<Music> musicTest ;
-//
-//        Mockito.when(musicRepository.findByNameArtistOrNameMusic(filter)).thenReturn(List.of(music));
-//        musicTest = musicService.findMusicsByMusicNameOrArtistName(filter);
-//        Assertions.assertTrue(musicTest.contains(music));
-//
-//    }
+    @Test
+    public void findMusicsByMusicNameOrArtistName(){
+        String filter = "The Beatles";
+        List<Music> musicTest ;
+
+        Mockito.when(musicRepository.findByNameArtistOrNameMusic(filter)).thenReturn(List.of(music));
+        musicTest = musicService.findMusicsByMusicNameOrArtistName(filter);
+        Assertions.assertTrue(musicTest.contains(music));
+
+    }
 }

@@ -39,24 +39,24 @@ public class PlaylistServiceTest {
     }
 
 
-//    @Test
-//    public void assertThrowsErrorWhenFilterLesserThanThree(){
-//        String id = null;
-//        var body = new PlaylistReqBody(new ArrayList<Music>());
-//        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6","Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones",new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20","Engenheiros do Hawaii")));
-//        Exception error = Assertions.assertThrows(NullPointerException.class, () -> playlistService.addMusicToPlaylist(id,body));
-//        Assertions.assertEquals("Deve ser passado um ID válido", error.getMessage());
-//
-//    }
-//
-//    @Test
-//    public void payLoadValidation(){
-//
-//        var body = new PlaylistReqBody(new ArrayList<Music>());
-//        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6","Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones",new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20","Engenheiros do Hawaii")));
-//
-//
-//    }
+    @Test
+    public void assertThrowsErrorWhenFilterLesserThanThree(){
+        String id = null;
+        var body = new PlaylistReqBody(new ArrayList<Music>());
+        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6","Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones",new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20","Engenheiros do Hawaii")));
+        Exception error = Assertions.assertThrows(NullPointerException.class, () -> playlistService.addMusicToPlaylist(id,body));
+        Assertions.assertEquals("Deve ser passado um ID válido", error.getMessage());
+
+    }
+
+    @Test
+    public void payLoadValidation(){
+
+        var body = new PlaylistReqBody(new ArrayList<Music>());
+        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6","Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones",new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20","Engenheiros do Hawaii")));
+
+
+    }
 
 
 }
