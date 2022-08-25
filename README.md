@@ -80,7 +80,7 @@ Utilização da API token-provider e seus endpoints para gerar os tokens dos usu
 <div id='gerenciamentoDoProjeto'/> 
 <h3> Gerenciamento do Projeto </h3>
 
-Agestão do projeto segiu os seguintes ritos:
+A gestão do projeto segiu os seguintes ritos:
 
 * Daily;
 * Alinhamentos técnicos;
@@ -91,8 +91,8 @@ Agestão do projeto segiu os seguintes ritos:
 <div id='colaboradores'/> 
 <h3> Colaboradores </h3>
 
-* Bruno Gabriel de Oliveira Chagas @bchagas;  **[*Bruno- GitHub*](https://github.com/bchagas99)**
-* Elane Garcia de Brito @elanegarcia; **[*Elane-GitHub*](https://github.com/garciaelane)**
-* Eliabe Dafne Vieira de Oliveira @eliabe; **[*Eliabe- GitHub*](https://github.com/eliabe-ciandt)**
-* Jehan Lucas Vieira e Silva @jehan; **[*Jehan-GitHub*](https://github.com/Jehanlucas)**
-* Jezielle de Fátima Farias da Cunha @jezielle. **[*Jezielle-GitHub*](https://github.com/jezielleciandt)**
+* Bruno Gabriel de Oliveira Chagas @bchagas;  **[*Bruno - GitHub*](https://github.com/bchagas99)**
+* Elane Garcia de Brito @elanegarcia; **[*Elane - GitHub*](https://github.com/garciaelane)**
+* Eliabe Dafne Vieira de Oliveira @eliabe; **[*Eliabe-  GitHub*](https://github.com/eliabe-ciandt)**
+* Jehan Lucas Vieira e Silva @jehan; **[*Jehan - GitHub*](https://github.com/Jehanlucas)**
+* Jezielle de Fátima Farias da Cunha @jezielle. **[*Jezielle - GitHub*](https://github.com/jezielleciandt)**
