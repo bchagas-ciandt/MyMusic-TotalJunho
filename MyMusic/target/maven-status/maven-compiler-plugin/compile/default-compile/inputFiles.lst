@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidIdException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/AppExceptionHandler.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/PlaylistController.java
@@ -24,3 +25,31 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/MusicService.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidFilterException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/MusicController.java
+=======
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/PlaylistController.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/repository/PlaylistRepository.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/InterceptorReqBody.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/PlaylistService.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/interceptor/Interceptor.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/DTO/PlaylistReqBody.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Artist.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/SummitBootcampApplication.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/ExceptionResponseMessage.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/AppExceptionHandler.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidFilterException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/InterceptorConfig.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/UnauthorizedRequestException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/PayloadInvalidException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/PlaylistNotFoundException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Music.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/repository/MusicRepository.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Playlist.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidIdException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SqlDialect.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/MusicService.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/MusicLimitReachedException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/DbConfig.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/EmptyListException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/MusicNotFoundException.java
+/home/jehan/Documentos/projetos/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/MusicController.java
+>>>>>>> 0ef6657199d419c54b84eb4237895932c79a6ebb
