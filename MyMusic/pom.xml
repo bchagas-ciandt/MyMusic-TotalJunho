@@ -104,7 +104,7 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
             <version>4.4.0</version>
-
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.tngtech.archunit/archunit -->
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
