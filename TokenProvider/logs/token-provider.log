@@ -38,3 +38,40 @@
 2022-08-23 11:04:46,012 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
 2022-08-23 11:04:47,045 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
 2022-08-23 11:04:47,076 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplicationTests in 1.257 seconds (JVM running for 2.309)
+2022-08-24 11:39:46,505 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 18.0.2.1 on lnb035517cps with PID 796632 (/home/jehan/Documentos/projetos/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\jehan in /home/jehan/Documentos/projetos/MyMusic-TotalJunho/TokenProvider)
+2022-08-24 11:39:46,507 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-08-24 11:39:47,360 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-08-24 11:39:47,367 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-24 11:39:47,368 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-08-24 11:39:47,368 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-24 11:39:47,406 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-08-24 11:39:47,406 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 871 ms
+2022-08-24 11:39:47,795 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-08-24 11:39:47,813 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-08-24 11:39:47,822 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-08-24 11:39:47,834 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 1.693 seconds (JVM running for 2.109)
+2022-08-24 13:28:47,438 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-24 13:28:47,438 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-08-24 13:28:47,439 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Completed initialization in 1 ms
+2022-08-24 13:28:47,483 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Recebido requisição para criação de token para chave: teste
+2022-08-24 13:28:47,526 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Token gerado com sucesso
+2022-08-24 13:29:00,939 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-08-24 13:29:00,949 ERROR com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Requisição inválida: Token expirado
+2022-08-24 13:29:09,128 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Recebido requisição para geração de token: teste
+2022-08-24 13:29:09,130 ERROR com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Requisição inválida: Token expirado
+2022-08-24 13:29:25,236 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-7] Recebido requisição para criação de token para chave: teste
+2022-08-24 13:29:25,237 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-7] Token gerado com sucesso
+2022-08-24 13:29:40,175 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Recebido requisição para geração de token: teste
+2022-08-24 13:29:40,176 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Token validado com sucesso
+2022-08-24 13:30:19,908 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Recebido requisição para geração de token: teste
+2022-08-24 13:30:19,909 ERROR com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Requisição inválida: Token expirado
+2022-08-24 13:30:33,744 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-10] Recebido requisição para criação de token para chave: teste
+2022-08-24 13:30:33,745 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-10] Token gerado com sucesso
+2022-08-24 13:30:38,452 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Recebido requisição para geração de token: teste
+2022-08-24 13:30:38,454 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Token validado com sucesso
+2022-08-24 13:30:42,460 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Recebido requisição para geração de token: teste
+2022-08-24 13:30:42,461 ERROR com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Requisição inválida: Token expirado
+2022-08-24 13:36:16,450 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-08-24 13:36:16,451 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-08-24 13:37:41,381 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Recebido requisição para geração de token: teste
+2022-08-24 13:37:41,382 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Token validado com sucesso
