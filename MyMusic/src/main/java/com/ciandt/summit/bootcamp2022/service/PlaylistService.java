@@ -29,7 +29,7 @@ public class PlaylistService {
     private MusicRepository musicRepository;
 
     public Playlist addMusicToPlaylist(String playlistId, ObjectDTO musics) {
-        if (playlistId.equals(null) || playlistId == " ") {
+        if (playlistId == null || playlistId == " ") {
             logger.error("Id nulo ou em branco");
             throw new InvalidIdException("Deve ser passado um ID válido");
         }
