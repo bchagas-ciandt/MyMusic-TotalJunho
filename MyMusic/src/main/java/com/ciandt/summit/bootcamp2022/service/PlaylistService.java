@@ -32,26 +32,24 @@ public class PlaylistService {
         idValidation(playlistId);
 
         logger.info("buscando playlist por id");
-        Optional<Playlist> playlist = Optional.ofNullable(playlistRepository
-                .findById(playlistId)
-                .orElseThrow(() -> new PlaylistNotFoundException("Playlist com esse ID não existe")));
+        Playlist playlist = findById(playlistId);
 
         payLoadValidation(musics);
 
-        List<Music> playlistMusics = playlist.get().getMusicas();
+        List<Music> playlistMusics = playlist.getMusicas();
 
         logger.info("adicionando musicas na playlist");
         for (Music music : musics.getData()) {
             if (!playlistMusics.contains(music)) {
                 logger.info("Música adicionada na playlist");
-                playlist.get().getMusicas().add(music);
+                playlist.getMusicas().add(music);
             } else {
                 logger.info("Música já existe na playlost");
             }
         }
 
         logger.info("Salvando playlist no banco de dados");
-        playlistRepository.save(playlist.get());
+        playlistRepository.save(playlist);
 
         logger.info("retornando playlist com sucesso!");
         return playlistRepository.findById(playlistId).get();
@@ -62,21 +60,17 @@ public class PlaylistService {
         idValidation(musicId);
 
         logger.info("buscando playlist por id");
-        Optional<Playlist> playlist = Optional.ofNullable(playlistRepository
-                .findById(playlistId)
-                .orElseThrow(() -> new PlaylistNotFoundException("Playlist com esse ID não existe")));
+        Playlist playlist = findById(playlistId);
 
         logger.info("buscando música por id");
-        Optional<Music> musicToBeRemoved = Optional.ofNullable(musicRepository
-                .findById(musicId)
-                .orElseThrow(() -> new MusicNotFoundException("Música com esse id não existe")));
+        Music musicToBeRemoved = findMusicById(musicId);
         
         logger.info("verificando se música existe na playlist");
-        boolean musicExistInPlaylist = playlist.get().getMusicas().contains(musicToBeRemoved.get());
+        boolean musicExistInPlaylist = playlist.getMusicas().contains(musicToBeRemoved);
 
         if (musicExistInPlaylist) {
-            playlist.get().getMusicas().remove(musicToBeRemoved.get());
-            playlistRepository.save(playlist.get());
+            playlist.getMusicas().remove(musicToBeRemoved);
+            playlistRepository.save(playlist);
             logger.info("Música removida da playlist");
         } else {
             logger.error("Música não existe na playlist, lançando exceção");
@@ -87,7 +81,12 @@ public class PlaylistService {
 
     public Playlist findById(String id) {
         idValidation(id);
-        return playlistRepository.findById(id).get();
+        return playlistRepository.findById(id).orElseThrow(() -> new PlaylistNotFoundException("Playlist com esse ID não existe"));
+    }
+
+    public Music findMusicById(String id) {
+        idValidation(id);
+        return musicRepository.findById(id).orElseThrow(() -> new MusicNotFoundException("Música com esse id não existe"));
     }
 
     public List<Playlist> findAll() {
