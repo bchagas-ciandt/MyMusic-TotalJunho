@@ -1,9 +1,5 @@
 package com.ciandt.summit.bootcamp2022.config.interceptor;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
 public class InterceptorReqBody {
     private Data data;
 
@@ -11,10 +7,25 @@ public class InterceptorReqBody {
         this.data = new Data(name, token);
     }
 
-    @Getter
-    @AllArgsConstructor
+    public Data getData() {
+        return this.data;
+    }
+
     static class Data {
         private String name;
         private String token;
+
+        public Data(String name, String token) {
+            this.name = name;
+            this.token = token;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public String getToken() {
+            return this.token;
+        }
     }
 }

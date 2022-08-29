@@ -1,7 +1,6 @@
 package com.ciandt.token.provider.core.usecases;
 
 import com.ciandt.token.provider.services.EncryptServices;
-import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

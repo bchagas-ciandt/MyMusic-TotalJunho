@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
@@ -10,11 +9,6 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "Artistas")
 public class Artist implements Serializable{
@@ -25,6 +19,14 @@ public class Artist implements Serializable{
     private String id;
     @Column(name = "Nome")
     private String name;
+
+    public Artist(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Artist() {
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -37,5 +39,25 @@ public class Artist implements Serializable{
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return "Artist(id=" + this.getId() + ", name=" + this.getName() + ")";
     }
 }

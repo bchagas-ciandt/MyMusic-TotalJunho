@@ -1,17 +1,11 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "Musicas")
 public class Music implements Serializable {
@@ -27,6 +21,15 @@ public class Music implements Serializable {
     @JoinColumn(name = "ArtistaId")
     private Artist artist;
 
+    public Music(String id, String name, Artist artist) {
+        this.id = id;
+        this.name = name;
+        this.artist = artist;
+    }
+
+    public Music() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,5 +41,33 @@ public class Music implements Serializable {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Artist getArtist() {
+        return this.artist;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public String toString() {
+        return "Music(id=" + this.getId() + ", name=" + this.getName() + ", artist=" + this.getArtist() + ")";
     }
 }
