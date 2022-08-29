@@ -6,7 +6,6 @@ import com.ciandt.summit.bootcamp2022.entity.Artist;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
-import com.ciandt.summit.bootcamp2022.exception.PayloadInvalidException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import org.junit.jupiter.api.Assertions;
@@ -18,8 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class PlaylistServiceTest {
@@ -57,7 +54,7 @@ public class PlaylistServiceTest {
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
         Exception error = Assertions.assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null,body));
-        Assertions.assertEquals("Deve ser passado um ID válido", error.getMessage());
+        Assertions.assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
     }
 
 

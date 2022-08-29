@@ -1,7 +1,5 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,11 +7,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Table(name = "Playlists")
 public class Playlist implements Serializable {
 
@@ -29,6 +22,14 @@ public class Playlist implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "MusicaId", referencedColumnName = "Id"))
     private List<Music> musicas = new ArrayList<>();
 
+    public Playlist(String id, List<Music> musicas) {
+        this.id = id;
+        this.musicas = musicas;
+    }
+
+    public Playlist() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,5 +41,25 @@ public class Playlist implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, musicas);
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public List<Music> getMusicas() {
+        return this.musicas;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setMusicas(List<Music> musicas) {
+        this.musicas = musicas;
+    }
+
+    public String toString() {
+        return "Playlist(id=" + this.getId() + ", musicas=" + this.getMusicas() + ")";
     }
 }

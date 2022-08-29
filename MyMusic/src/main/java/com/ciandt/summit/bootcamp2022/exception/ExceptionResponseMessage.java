@@ -1,11 +1,8 @@
 package com.ciandt.summit.bootcamp2022.exception;
 
-import lombok.Builder;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@Builder
 public class ExceptionResponseMessage implements Serializable {
 
     private Date timestamp;
@@ -26,6 +23,10 @@ public class ExceptionResponseMessage implements Serializable {
     public ExceptionResponseMessage() {
     }
 
+    public static ExceptionResponseMessageBuilder builder() {
+        return new ExceptionResponseMessageBuilder();
+    }
+
     public Date getTimestamp() {
         return timestamp;
     }
@@ -40,5 +41,43 @@ public class ExceptionResponseMessage implements Serializable {
 
     public int getStatusCode() {
         return statusCode;
+    }
+
+    public static class ExceptionResponseMessageBuilder {
+        private Date timestamp;
+        private String message;
+        private String details;
+        private int statusCode;
+
+        ExceptionResponseMessageBuilder() {
+        }
+
+        public ExceptionResponseMessageBuilder timestamp(Date timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public ExceptionResponseMessageBuilder message(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public ExceptionResponseMessageBuilder details(String details) {
+            this.details = details;
+            return this;
+        }
+
+        public ExceptionResponseMessageBuilder statusCode(int statusCode) {
+            this.statusCode = statusCode;
+            return this;
+        }
+
+        public ExceptionResponseMessage build() {
+            return new ExceptionResponseMessage(timestamp, message, details, statusCode);
+        }
+
+        public String toString() {
+            return "ExceptionResponseMessage.ExceptionResponseMessageBuilder(timestamp=" + this.timestamp + ", message=" + this.message + ", details=" + this.details + ", statusCode=" + this.statusCode + ")";
+        }
     }
 }

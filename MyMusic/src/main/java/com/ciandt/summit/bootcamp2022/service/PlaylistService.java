@@ -29,13 +29,7 @@ public class PlaylistService {
     private MusicRepository musicRepository;
 
     public Playlist addMusicToPlaylist(String playlistId, ObjectDTO musics) {
-        if (playlistId == null || playlistId == " ") {
-            logger.error("Id nulo ou em branco");
-            throw new InvalidIdException("Deve ser passado um ID válido");
-        }
-        if (musics == null) {
-            throw new PayloadInvalidException("JSON Body incorreto: consulte documentação");
-        }
+        idValidation(playlistId);
 
         logger.info("buscando playlist por id");
         Optional<Playlist> playlist = Optional.ofNullable(playlistRepository
@@ -63,16 +57,48 @@ public class PlaylistService {
         return playlistRepository.findById(playlistId).get();
     }
 
-    public Playlist findById(String id) {
-        if (id.equals(null) || id == " ") {
-            logger.error("Id nulo ou em branco");
-            throw new InvalidIdException("Deve ser passado um ID válido");
+    public void removeMusicFromPlaylist(String playlistId, String musicId) {
+        idValidation(playlistId);
+        idValidation(musicId);
+
+        logger.info("buscando playlist por id");
+        Optional<Playlist> playlist = Optional.ofNullable(playlistRepository
+                .findById(playlistId)
+                .orElseThrow(() -> new PlaylistNotFoundException("Playlist com esse ID não existe")));
+
+        logger.info("buscando música por id");
+        Optional<Music> musicToBeRemoved = Optional.ofNullable(musicRepository
+                .findById(musicId)
+                .orElseThrow(() -> new MusicNotFoundException("Música com esse id não existe")));
+        
+        logger.info("verificando se música existe na playlist");
+        boolean musicExistInPlaylist = playlist.get().getMusicas().contains(musicToBeRemoved.get());
+
+        if (musicExistInPlaylist) {
+            playlist.get().getMusicas().remove(musicToBeRemoved.get());
+            playlistRepository.save(playlist.get());
+            logger.info("Música removida da playlist");
+        } else {
+            logger.error("Música não existe na playlist, lançando exceção");
+            throw new MusicNotFoundException("Música não existe na playlist");
         }
+
+    }
+
+    public Playlist findById(String id) {
+        idValidation(id);
         return playlistRepository.findById(id).get();
     }
 
     public List<Playlist> findAll() {
         return playlistRepository.findAll();
+    }
+
+    private void idValidation(String id) {
+        if (id == " " || id == null) {
+            logger.error("Id nulo ou em branco");
+            throw new InvalidIdException("Id não não pode ser nulo ou branco");
+        }
     }
 
     private void payLoadValidation(ObjectDTO musics) {
@@ -84,7 +110,10 @@ public class PlaylistService {
             if (!musicRepository.existsById(music.getId())) {
                 throw new MusicNotFoundException("Música não existe");
             }
-            if (!music.getId().equals(musicReturn.getId()))
+            if (!music.getId().equals(musicReturn.getId())) {
+                logger.error("id da música passado de forma incorreta");
+                throw new PayloadInvalidException("Payload incorreto: id da música passado de forma incorreta");
+            }
             if (!music.getName().equals(musicReturn.getName())) {
                 logger.error("nome da música passado de forma incorreta");
                 throw new PayloadInvalidException("Payload incorreto: nome da música passado de forma incorreta");
