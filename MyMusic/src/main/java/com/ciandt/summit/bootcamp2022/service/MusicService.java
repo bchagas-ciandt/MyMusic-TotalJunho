@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MusicService {
@@ -29,13 +30,26 @@ public class MusicService {
         logger.info("Buscando músicas com o filtro: "+ filter);
         List<Music> musics = musicRepository.findByNameArtistOrNameMusic(filter);
 
-        if (musics.isEmpty()) {
-            logger.error("Lista vazia para o filtro do parametro");
-            throw new EmptyListException("Não foi encontrada nenhuma música com o filtro: "+ filter);
-        }
+        emptyPlaylistShouldThrowException(musics);
 
         ObjectDTO objectDTO = ObjectDTO.builder().data(musics).build();
 
         return objectDTO;
+    }
+    public ObjectDTO findMusicsWithoutParameters(){
+        logger.info("Buscando músicas sem filtro");
+        List<Music> musics = musicRepository.findAll();
+        emptyPlaylistShouldThrowException(musics);
+        List<Music> listMusicsSorted = musics.stream().sorted((a1, a2)->a1.getArtist().getName()
+                .compareTo(a2.getArtist().getName())).collect(Collectors.toList());
+        ObjectDTO objectDTO = ObjectDTO.builder().data(listMusicsSorted).build();
+
+        return objectDTO;
+    }
+    private void emptyPlaylistShouldThrowException(List<Music> musics){
+        if (musics.isEmpty()) {
+            logger.error("Lista vazia para o filtro do parametro");
+            throw new EmptyListException("Não foi encontrada nenhuma música para esta busca.");
+        }
     }
 }
