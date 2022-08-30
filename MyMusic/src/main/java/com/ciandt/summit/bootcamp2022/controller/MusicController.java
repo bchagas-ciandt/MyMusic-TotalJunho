@@ -30,9 +30,13 @@ public class MusicController {
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
     @GetMapping
-    public ResponseEntity<ObjectDTO> findMusicsByMusicNameOrArtistName(@RequestParam(required = true, name = "filtro") String name) {
-
-        ObjectDTO objectDTO = musicService.findMusicsByMusicNameOrArtistName(name);
+    public ResponseEntity<ObjectDTO> findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
+        ObjectDTO objectDTO;
+        if(name.isEmpty()){
+             objectDTO = musicService.findMusicsWithoutParameters();
+        }else {
+            objectDTO = musicService.findMusicsByMusicNameOrArtistName(name);
+        }
 
         return ResponseEntity.ok(objectDTO);
 
