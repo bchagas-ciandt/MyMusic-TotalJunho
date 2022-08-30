@@ -1,9 +1,11 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/InvalidIdException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/AppExceptionHandler.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/controller/PlaylistController.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SwaggerConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/MusicLimitReachedException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/service/PlaylistService.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SqlDialect.java
+/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/SecurityConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/SummitBootcampApplication.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/repository/MusicRepository.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/UnauthorizedRequestException.java
@@ -12,7 +14,6 @@
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/DTO/ObjectDTO.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/EmptyListException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Music.java
-/home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/config/InterceptorConfig.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/entity/Artist.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/PlaylistNotFoundException.java
 /home/bchagas/Documents/MyMusic-TotalJunho/MyMusic/src/main/java/com/ciandt/summit/bootcamp2022/exception/PayloadInvalidException.java
