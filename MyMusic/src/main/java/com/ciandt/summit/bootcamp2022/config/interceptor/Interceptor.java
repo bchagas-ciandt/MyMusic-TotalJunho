@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.config.interceptor;
 
 import com.ciandt.summit.bootcamp2022.exception.UnauthorizedRequestException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -25,7 +26,7 @@ public class Interceptor implements HandlerInterceptor {
        String name = request.getHeader("name");
        String token = request.getHeader("token");
 
-       if (name.isBlank() || token.isBlank()) {
+       if (StringUtils.isBlank(name) || StringUtils.isBlank(token)) {
         logger.warn("Credenciais inválidas, lançando exceção");
         throw new UnauthorizedRequestException("nome ou token de autenticação inválidos");
        }
