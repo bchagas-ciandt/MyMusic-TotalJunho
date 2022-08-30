@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.service;
 
+import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
 import com.ciandt.summit.bootcamp2022.entity.Artist;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.exception.EmptyListException;
@@ -14,6 +15,13 @@ import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -24,10 +32,10 @@ public class MusicServiceTest {
     private MusicRepository musicRepository;
 
     @InjectMocks
-    private MusicService musicService ;
+    private MusicService musicService;
 
-    Music music ;
-
+    Music music;
+    ObjectDTO objectDTO;
 
     @BeforeEach
     @SuppressWarnings("unchecked")
@@ -40,35 +48,19 @@ public class MusicServiceTest {
 
     }
 
-
-
-
-
     @Test
-    @DisplayName("")
-    public void assertThrowsErrorWhenFilterLesserThanThree(){
+    @DisplayName("deve estourar InvalidFilterException quando filtro tiver menos que 3 catacteres")
+    public void assertThrowsErrorWhenFilterLesserThanThree() {
         String filter = "aa";
         Exception error = Assertions.assertThrows(InvalidFilterException.class, () -> musicService.findMusicsByMusicNameOrArtistName(filter));
-        Assertions.assertEquals("Filtro com menos de 3 caracteres", error.getMessage());
+        assertEquals("Filtro com menos de 3 caracteres", error.getMessage());
     }
-
 
     @Test
-    public void filterNotFound(){
+    public void filterNotFound() {
         String filter = "tevdfvfdv";
         Exception error = Assertions.assertThrows(EmptyListException.class, () -> musicService.findMusicsByMusicNameOrArtistName(filter));
-        Assertions.assertEquals("Não foi encontrada nenhuma música com o filtro: "+ filter, error.getMessage());
+        assertEquals("Não foi encontrada nenhuma música com o filtro: " + filter, error.getMessage());
     }
 
-
-  /*  @Test
-    public void findMusicsByMusicNameOrArtistName(){
-        String filter = "The Beatles";
-        List<Music> musicTest ;
-
-        Mockito.when(musicRepository.findByNameArtistOrNameMusic(filter)).thenReturn(List.of(music));
-        musicTest = musicService.findMusicsByMusicNameOrArtistName(filter);
-        Assertions.assertTrue(musicTest.contains(music));
-
-    }*/
 }
