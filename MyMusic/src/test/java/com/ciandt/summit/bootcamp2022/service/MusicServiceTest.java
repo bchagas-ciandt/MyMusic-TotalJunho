@@ -38,8 +38,6 @@ public class MusicServiceTest {
     ObjectDTO objectDTO;
 
     @BeforeEach
-    @SuppressWarnings("unchecked")
-
     public void setup() throws IllegalArgumentException {
         music = new Music("fdfdfdgtgtrhthrhtrh", "The Beatles", new Artist("fdgfdgtthrbrb", "Ifvdfvdfv"));
         music.setId("fdfdfdgtgtrhthrhtrh");
