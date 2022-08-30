@@ -57,7 +57,7 @@ public class MusicServiceTest {
     public void filterNotFound(){
         String filter = "tevdfvfdv";
         Exception error = Assertions.assertThrows(EmptyListException.class, () -> musicService.findMusicsByMusicNameOrArtistName(filter));
-        Assertions.assertEquals("Não foi encontrada nenhuma música com o filtro: "+ filter, error.getMessage());
+        Assertions.assertEquals("Não foi encontrada nenhuma música para esta busca.", error.getMessage());
     }
 
 
