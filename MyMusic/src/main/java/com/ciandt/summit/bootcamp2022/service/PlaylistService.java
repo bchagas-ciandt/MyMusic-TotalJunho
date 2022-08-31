@@ -12,6 +12,8 @@ import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class PlaylistService {
     @Autowired
     private MusicRepository musicRepository;
 
+    @CacheEvict(value = "playlists", allEntries = true)
     public Playlist addMusicToPlaylist(String playlistId, ObjectDTO musics) {
         idValidation(playlistId);
 
@@ -54,7 +57,7 @@ public class PlaylistService {
         logger.info("retornando playlist com sucesso!");
         return playlistRepository.findById(playlistId).get();
     }
-
+    @CacheEvict(value = "playlists", allEntries = true)
     public void removeMusicFromPlaylist(String playlistId, String musicId) {
         idValidation(playlistId);
         idValidation(musicId);
@@ -89,6 +92,7 @@ public class PlaylistService {
         return musicRepository.findById(id).orElseThrow(() -> new MusicNotFoundException("Música com esse id não existe"));
     }
 
+    @Cacheable("playlists")
     public List<Playlist> findAll() {
         return playlistRepository.findAll();
     }
