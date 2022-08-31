@@ -17,6 +17,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PlaylistServiceTest {
@@ -54,7 +61,7 @@ public class PlaylistServiceTest {
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
         Exception error = Assertions.assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null,body));
-        Assertions.assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
+        assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
     }
 
 
@@ -69,7 +76,7 @@ public class PlaylistServiceTest {
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
         Exception error = Assertions.assertThrows(PlaylistNotFoundException.class, () -> playlistService.addMusicToPlaylist(id,body));
-        Assertions.assertEquals("Playlist com esse ID não existe", error.getMessage());
+        assertEquals("Playlist com esse ID não existe", error.getMessage());
     }
 
 
@@ -81,6 +88,25 @@ public class PlaylistServiceTest {
 
 
     }
+    @Test
+    public void shouldReturnAllPlaylist() {
+        List<Playlist> playlists = new ArrayList<>(List.of(playlist));
 
+        when(playlistRepository.findAll()).thenReturn(playlists);
 
+        List<Playlist> playlistsDTO = playlistService.findAll();
+
+        assertNotNull(playlistsDTO);
+        assertEquals(playlists.size(), playlistsDTO.size());
+        assertEquals("fdfdfdgtgtrhthrhtrh", playlistsDTO.get(0).getId());
+
+    }
+    @Test
+    public void shouldReturnEmptyList() {
+        when(playlistRepository.findAll()).thenReturn(Collections.emptyList());
+
+        List<Playlist> playlistsDTO = playlistService.findAll();
+
+        assertThat(playlistsDTO).isEmpty();
+    }
 }
