@@ -8,6 +8,7 @@ import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
+    @Cacheable("musicswithfilter")
     public ObjectDTO findMusicsByMusicNameOrArtistName(String filter) {
         if (filter.length() < 3) {
             logger.error("Filtro com menos de 3 caracteres");
@@ -34,8 +36,10 @@ public class MusicService {
 
         ObjectDTO objectDTO = ObjectDTO.builder().data(musics).build();
 
+        logger.info("Retornando músicas com o filtro: "+ filter);
         return objectDTO;
     }
+    @Cacheable("allmusics")
     public ObjectDTO findMusicsWithoutParameters(){
         logger.info("Buscando músicas sem filtro");
         List<Music> musics = musicRepository.findAll();

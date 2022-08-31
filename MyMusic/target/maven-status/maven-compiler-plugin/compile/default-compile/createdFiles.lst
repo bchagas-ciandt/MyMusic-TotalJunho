@@ -11,8 +11,10 @@ com/ciandt/summit/bootcamp2022/DTO/ObjectDTO$ObjectDTOBuilder.class
 com/ciandt/summit/bootcamp2022/exception/EmptyListException.class
 com/ciandt/summit/bootcamp2022/repository/PlaylistRepository.class
 com/ciandt/summit/bootcamp2022/exception/MusicLimitReachedException.class
+com/ciandt/summit/bootcamp2022/config/CacheConfiguration$1.class
 com/ciandt/summit/bootcamp2022/config/SecurityConfig.class
 com/ciandt/summit/bootcamp2022/exception/PayloadInvalidException.class
+com/ciandt/summit/bootcamp2022/config/CacheConfiguration.class
 com/ciandt/summit/bootcamp2022/exception/ExceptionResponseMessage$ExceptionResponseMessageBuilder.class
 com/ciandt/summit/bootcamp2022/config/SqliteConfig.class
 com/ciandt/summit/bootcamp2022/exception/PlaylistNotFoundException.class
