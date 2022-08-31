@@ -22,7 +22,7 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
-    @Cacheable("musics")
+    @Cacheable("musicswithfilter")
     public ObjectDTO findMusicsByMusicNameOrArtistName(String filter) {
         if (filter.length() < 3) {
             logger.error("Filtro com menos de 3 caracteres");
@@ -39,6 +39,7 @@ public class MusicService {
         logger.info("Retornando músicas com o filtro: "+ filter);
         return objectDTO;
     }
+    @Cacheable("allmusics")
     public ObjectDTO findMusicsWithoutParameters(){
         logger.info("Buscando músicas sem filtro");
         List<Music> musics = musicRepository.findAll();
