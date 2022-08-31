@@ -73,22 +73,6 @@ public class PlaylistServiceTest {
     }
 
 
-    /*@Test
-    // id valido
-    public void assertThrowsErrorWhenIDIsNull2(){
-
-        Music music = new Music("7ff43fef-2d9f-4842-a23a-4be8b35bf422", "The Beatles", new Artist("7ff43fef-2d9f-4842-a23a-4be8b35bf422", "Ifvdfvdfv"));
-        Playlist play = new Playlist();
-        play.setMusicas((List.of(music)));
-        String id = play.getId() ;
-        var body = new ObjectDTO(new ArrayList<Music>());
-        ObjectDTO newMusic = new ObjectDTO(new ArrayList<Music>());
-        ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
-        body.getData().addAll(newMusic.getData());
-        Exception error = Assertions.assertThrows(PayloadInvalidException.class, () -> playlistService.addMusicToPlaylist(id,body));
-        Assertions.assertEquals("JSON Body incorreto: consulte documentação", error.getMessage());
-    }*/
-
     @Test
     public void payLoadValidation(){
 
