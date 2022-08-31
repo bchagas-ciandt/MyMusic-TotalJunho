@@ -173,10 +173,14 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>com.ciandt.summit.bootcamp2022.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.controller.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.service.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.entity.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.ciandt.summit.bootcamp2022.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.controller.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.service.*</param>
+                        <param>com.ciandt.summit.bootcamp2022.entity.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
