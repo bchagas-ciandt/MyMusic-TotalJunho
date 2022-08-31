@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ciandt.summit.bootcamp2022.entity.MusicTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in com.ciandt.summit.bootcamp2022.entity.MusicTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.62 s - in com.ciandt.summit.bootcamp2022.entity.MusicTest
->>>>>>> developer
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.273 s - in com.ciandt.summit.bootcamp2022.entity.MusicTest

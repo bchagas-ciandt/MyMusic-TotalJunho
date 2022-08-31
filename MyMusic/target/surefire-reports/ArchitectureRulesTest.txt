@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ArchitectureRulesTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.982 s - in ArchitectureRulesTest
-=======
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.467 s - in ArchitectureRulesTest
->>>>>>> developer
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.458 s - in ArchitectureRulesTest
