@@ -6,9 +6,10 @@ import com.ciandt.summit.bootcamp2022.entity.Artist;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
+import com.ciandt.summit.bootcamp2022.exception.MusicNotFoundException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
+import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,13 +17,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,28 +29,37 @@ public class PlaylistServiceTest {
     @Mock
     private PlaylistRepository playlistRepository;
 
+    @Mock
+    private MusicRepository musicRepository;
+
     @InjectMocks
-    private PlaylistService playlistService ;
+    private PlaylistService playlistService;
     @Mock
     private MusicService musicService;
-    Playlist playlist ;
+    Playlist playlistEmpty;
+    Playlist playlistWithOneMusic;
+
+    Playlist playlistUpdated;
+    Artist artist;
+    Music music;
 
     @BeforeEach
     @SuppressWarnings("unchecked")
 
     public void setup() throws IllegalArgumentException {
 
-
-        playlist = new Playlist("fdfdfdgtgtrhthrhtrh", new ArrayList<>());
-
-        playlist.setId("fdfdfdgtgtrhthrhtrh");
-
+        playlistEmpty = new Playlist("fdfdfdgtgtrhthrhtrh", new ArrayList<>());
+        playlistEmpty.setId("fdfdfdgtgtrhthrhtrh");
+        artist = new Artist("idArtist", "The Artist");
+        music = new Music("idMusic", "The Music", artist);
+        playlistWithOneMusic = new Playlist("idPlaylist", new ArrayList<>());
+        playlistWithOneMusic.getMusicas().add(music);
 
     }
 
 
     @Test
-    public void assertThrowsErrorWhenIDIsNull(){
+    public void assertThrowsErrorWhenIDIsNull() {
         String id = "ffsdfdsfsdfdfdsfd";
         var body = new ObjectDTO(new ArrayList<Music>());
 
@@ -60,14 +67,14 @@ public class PlaylistServiceTest {
 
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
-        Exception error = Assertions.assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null,body));
+        Exception error = assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null, body));
         assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
     }
 
 
     @Test
     //ID INVALIDO
-    public void assertThrowsErrorWhenPlaylistNotExists(){
+    public void assertThrowsErrorWhenPlaylistDoesNotExists() {
         String id = "ffsdfdsfsdfdfdsfd";
         var body = new ObjectDTO(new ArrayList<Music>());
 
@@ -75,22 +82,31 @@ public class PlaylistServiceTest {
 
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
-        Exception error = Assertions.assertThrows(PlaylistNotFoundException.class, () -> playlistService.addMusicToPlaylist(id,body));
+        Exception error = assertThrows(PlaylistNotFoundException.class, () -> playlistService.addMusicToPlaylist(id, body));
         assertEquals("Playlist com esse ID não existe", error.getMessage());
     }
 
+    @Test
+    public void assertThrowsErrorWhenMusicDoesNotExists() {
+        String musicID = "idMusic";
+        String playlistId = "ffsdfdsfsdfdfdsfd";
+        when(playlistRepository.findById(playlistId)).thenReturn(Optional.ofNullable(playlistEmpty));
+
+        Exception error = assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById(musicID));
+        assertEquals("Música com esse id não existe", error.getMessage());
+    }
 
     @Test
-    public void payLoadValidation(){
+    public void payLoadValidation() {
 
         var body = new ObjectDTO(new ArrayList<Music>());
-        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6","Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones",new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20","Engenheiros do Hawaii")));
-
+        body.getData().add(new Music("52fe17fd-6303-43c3-b1c4-e95210f0b9c6", "Era Um Garoto Que Como Eu Amava Os Beatles E Os Rolling Stones", new Artist("87ed4cf4-414b-447f-9cc2-d6a08470ff20", "Engenheiros do Hawaii")));
 
     }
+
     @Test
     public void shouldReturnAllPlaylist() {
-        List<Playlist> playlists = new ArrayList<>(List.of(playlist));
+        List<Playlist> playlists = new ArrayList<>(List.of(playlistEmpty));
 
         when(playlistRepository.findAll()).thenReturn(playlists);
 
@@ -101,6 +117,7 @@ public class PlaylistServiceTest {
         assertEquals("fdfdfdgtgtrhthrhtrh", playlistsDTO.get(0).getId());
 
     }
+
     @Test
     public void shouldReturnEmptyList() {
         when(playlistRepository.findAll()).thenReturn(Collections.emptyList());
@@ -108,5 +125,31 @@ public class PlaylistServiceTest {
         List<Playlist> playlistsDTO = playlistService.findAll();
 
         assertThat(playlistsDTO).isEmpty();
+    }
+
+    @Test
+    public void shouldReturnPlaylistById() {
+        String id = "fdfdfdgtgtrhthrhtrh";
+
+        when(playlistRepository.findById(id)).thenReturn(Optional.ofNullable(playlistEmpty));
+
+        Playlist playlistReturned = playlistService.findById(id);
+
+        assertNotNull(playlistReturned);
+        assertEquals("fdfdfdgtgtrhthrhtrh", playlistReturned.getId());
+    }
+
+    @Test
+    public void shouldRemoveAMusicFromThePlaylist() throws Exception {
+        String playlistId = "idPlaylist";
+        String musicId = "idMusic";
+
+        when(playlistRepository.findById(playlistId)).thenReturn(Optional.ofNullable(playlistWithOneMusic));
+        when(musicRepository.findById(musicId)).thenReturn(Optional.ofNullable(music));
+
+        playlistService.removeMusicFromPlaylist(playlistId, musicId);
+
+        assertEquals("idPlaylist", playlistWithOneMusic.getId());
+        assertEquals(0, playlistWithOneMusic.getMusicas().size());
     }
 }

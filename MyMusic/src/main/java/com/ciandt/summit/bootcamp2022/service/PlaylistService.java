@@ -47,7 +47,7 @@ public class PlaylistService {
                 logger.info("Música adicionada na playlist");
                 playlist.getMusicas().add(music);
             } else {
-                logger.info("Música já existe na playlost");
+                logger.info("Música já existe na playlist");
             }
         }
 
@@ -100,7 +100,7 @@ public class PlaylistService {
     private void idValidation(String id) {
         if (id == " " || id == null) {
             logger.error("Id nulo ou em branco");
-            throw new InvalidIdException("Id não não pode ser nulo ou branco");
+            throw new InvalidIdException("Id não pode ser nulo ou branco");
         }
     }
 
