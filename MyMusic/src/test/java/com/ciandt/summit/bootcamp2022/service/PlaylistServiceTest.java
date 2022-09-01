@@ -11,14 +11,15 @@ import com.ciandt.summit.bootcamp2022.exception.PayloadInvalidException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
 import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
-import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
+import org.mockito.BDDMockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.util.Assert;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -51,11 +52,6 @@ public class PlaylistServiceTest {
         Playlist playlist = new Playlist("123123123213",  musicswith2);
         Playlist playlist2 = new Playlist("12312312321",  musicswith3);
         List<Playlist> playlists = new ArrayList<>(Arrays.asList(playlist));
-//        BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
-//        BDDMockito.when(playlistRepository.findAll()).thenReturn(playlists);
-//        BDDMockito.when(playlistRepository.save(ArgumentMatchers.any())).thenReturn(playlist);
-//        BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
-//        BDDMockito.when(musicRepository.findById("12321312312")).thenReturn(Optional.of(music3));
 
     @Test
     void findById_shouldThrowPlaylistNotFoundException_WhenPlaylistNotFound() {
