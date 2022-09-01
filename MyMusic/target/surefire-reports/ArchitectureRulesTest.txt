@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ArchitectureRulesTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.602 s - in ArchitectureRulesTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.446 s - in ArchitectureRulesTest
