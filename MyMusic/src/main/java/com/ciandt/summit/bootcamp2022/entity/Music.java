@@ -33,14 +33,21 @@ public class Music implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+
         Music music = (Music) o;
-        return id != null && Objects.equals(id, music.id);
+
+        if (!Objects.equals(id, music.id)) return false;
+        if (!Objects.equals(name, music.name)) return false;
+        return Objects.equals(artist, music.artist);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (artist != null ? artist.hashCode() : 0);
+        return result;
     }
 
     public String getId() {
