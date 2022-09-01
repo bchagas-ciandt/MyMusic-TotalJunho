@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">summit-bootcamp</a> &gt; <a href="index.source.html" class="el_package">com.ciandt.summit.bootcamp2022.config</a> &gt; <span class="el_source">SecurityConfig.java</span></div><h1>SecurityConfig.java</h1><pre class="source lang-java linenums">package com.ciandt.summit.bootcamp2022.config;
+
+import com.ciandt.summit.bootcamp2022.config.interceptor.Interceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
+@Configuration
+<span class="fc" id="L11">public class SecurityConfig extends WebMvcConfigurationSupport {</span>
+
+    @Autowired
+    private Interceptor interceptor;
+
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+<span class="fc" id="L17">        registry.addResourceHandler(&quot;/static/**&quot;).addResourceLocations(&quot;classpath:/static/&quot;);</span>
+<span class="fc" id="L18">        registry.addResourceHandler(&quot;swagger-ui.html&quot;)</span>
+<span class="fc" id="L19">                .addResourceLocations(&quot;classpath:/META-INF/resources/&quot;);</span>
+
+<span class="fc" id="L21">        registry.addResourceHandler(&quot;/webjars/**&quot;)</span>
+<span class="fc" id="L22">                .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;);</span>
+<span class="fc" id="L23">    }</span>
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+<span class="fc" id="L27">        registry.addInterceptor(interceptor)</span>
+<span class="fc" id="L28">                .addPathPatterns(&quot;/api/**&quot;);</span>
+<span class="fc" id="L29">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
