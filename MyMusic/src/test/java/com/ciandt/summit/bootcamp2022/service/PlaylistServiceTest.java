@@ -48,8 +48,8 @@ public class PlaylistServiceTest {
 
     public void setup() throws IllegalArgumentException {
 
-        playlistEmpty = new Playlist("fdfdfdgtgtrhthrhtrh", new ArrayList<>());
-        playlistEmpty.setId("fdfdfdgtgtrhthrhtrh");
+        playlistEmpty = new Playlist("idPlaylistEmpty", new ArrayList<>());
+        playlistEmpty.setId("idPlaylistEmpty");
         artist = new Artist("idArtist", "The Artist");
         music = new Music("idMusic", "The Music", artist);
         playlistWithOneMusic = new Playlist("idPlaylist", new ArrayList<>());
@@ -57,10 +57,9 @@ public class PlaylistServiceTest {
 
     }
 
-
     @Test
     public void assertThrowsErrorWhenIDIsNull() {
-        String id = "ffsdfdsfsdfdfdsfd";
+
         var body = new ObjectDTO(new ArrayList<Music>());
 
         ObjectDTO newMusic = new ObjectDTO(new ArrayList<Music>());
@@ -68,14 +67,12 @@ public class PlaylistServiceTest {
         ObjectDTO musics = musicService.findMusicsByMusicNameOrArtistName("cold");
         body.getData().addAll(newMusic.getData());
         Exception error = assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null, body));
-        assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
+        assertEquals("Id não pode ser nulo ou branco", error.getMessage());
     }
 
-
     @Test
-    //ID INVALIDO
     public void assertThrowsErrorWhenPlaylistDoesNotExists() {
-        String id = "ffsdfdsfsdfdfdsfd";
+        String id = "idPlaylistEmpty";
         var body = new ObjectDTO(new ArrayList<Music>());
 
         ObjectDTO newMusic = new ObjectDTO(new ArrayList<Music>());
@@ -84,16 +81,6 @@ public class PlaylistServiceTest {
         body.getData().addAll(newMusic.getData());
         Exception error = assertThrows(PlaylistNotFoundException.class, () -> playlistService.addMusicToPlaylist(id, body));
         assertEquals("Playlist com esse ID não existe", error.getMessage());
-    }
-
-    @Test
-    public void assertThrowsErrorWhenMusicDoesNotExists() {
-        String musicID = "idMusic";
-        String playlistId = "ffsdfdsfsdfdfdsfd";
-        when(playlistRepository.findById(playlistId)).thenReturn(Optional.ofNullable(playlistEmpty));
-
-        Exception error = assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById(musicID));
-        assertEquals("Música com esse id não existe", error.getMessage());
     }
 
     @Test
@@ -114,7 +101,7 @@ public class PlaylistServiceTest {
 
         assertNotNull(playlistsDTO);
         assertEquals(playlists.size(), playlistsDTO.size());
-        assertEquals("fdfdfdgtgtrhthrhtrh", playlistsDTO.get(0).getId());
+        assertEquals("idPlaylistEmpty", playlistsDTO.get(0).getId());
 
     }
 
@@ -129,14 +116,14 @@ public class PlaylistServiceTest {
 
     @Test
     public void shouldReturnPlaylistById() {
-        String id = "fdfdfdgtgtrhthrhtrh";
+        String id = "idPlaylistEmpty";
 
         when(playlistRepository.findById(id)).thenReturn(Optional.ofNullable(playlistEmpty));
 
         Playlist playlistReturned = playlistService.findById(id);
 
         assertNotNull(playlistReturned);
-        assertEquals("fdfdfdgtgtrhthrhtrh", playlistReturned.getId());
+        assertEquals("idPlaylistEmpty", playlistReturned.getId());
     }
 
     @Test
