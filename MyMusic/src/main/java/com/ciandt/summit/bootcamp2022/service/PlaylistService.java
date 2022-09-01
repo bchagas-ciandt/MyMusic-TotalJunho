@@ -14,10 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlaylistService {
@@ -42,14 +43,7 @@ public class PlaylistService {
         List<Music> playlistMusics = playlist.getMusicas();
 
         logger.info("adicionando musicas na playlist");
-        for (Music music : musics.getData()) {
-            if (!playlistMusics.contains(music)) {
-                logger.info("Música adicionada na playlist");
-                playlist.getMusicas().add(music);
-            } else {
-                logger.info("Música já existe na playlost");
-            }
-        }
+        addMusicToPlaylistIfMusicDoesnotExist(musics.getData(), playlist.getMusicas(), playlist);
 
         logger.info("Salvando playlist no banco de dados");
         playlistRepository.save(playlist);
@@ -105,29 +99,26 @@ public class PlaylistService {
     }
 
     private void payLoadValidation(ObjectDTO musics) {
-
         for (Music music : musics.getData()) {
+            String id = music.getId();
             Music musicReturn = musicRepository
-                    .findById(music.getId())
-                    .orElseThrow(() -> new PayloadInvalidException("Payload incorreto: consultar documentação"));
-            if (!musicRepository.existsById(music.getId())) {
-                throw new MusicNotFoundException("Música não existe");
+                    .findById(id)
+                    .orElseThrow(() -> new MusicNotFoundException("Música não existe"));
+            if (!music.equals(musicReturn)) {
+                logger.error("Payload da musica passado de forma incorreta");
+                throw new PayloadInvalidException("Payload incorreto: Atributo inválido");
             }
-            if (!music.getId().equals(musicReturn.getId())) {
-                logger.error("id da música passado de forma incorreta");
-                throw new PayloadInvalidException("Payload incorreto: id da música passado de forma incorreta");
-            }
-            if (!music.getName().equals(musicReturn.getName())) {
-                logger.error("nome da música passado de forma incorreta");
-                throw new PayloadInvalidException("Payload incorreto: nome da música passado de forma incorreta");
-            }
-            if (!music.getArtist().getId().equals(musicReturn.getArtist().getId())) {
-                logger.error("id do artista passado de forma incorreta");
-                throw new PayloadInvalidException("Payload incorreto: id do artista passado de forma incorreta");
-            }
-            if (!music.getArtist().getName().equals(musicReturn.getArtist().getName())) {
-                logger.error("nome do artista passado de forma incorreta");
-                throw new PayloadInvalidException("Payload incorreto: nome do artista passado de forma incorreta");
+        }
+    }
+
+    private void addMusicToPlaylistIfMusicDoesnotExist(List<Music> musics, List<Music> playlistMusics, Playlist playlist) {
+        for (Music music : musics) {
+            if (!playlistMusics.contains(music)) {
+                logger.info("Música adicionada na playlist");
+                playlist.getMusicas().add(music);
+            } else {
+                logger.info("Música já existe na playlist");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Música já existe na playlist");
             }
         }
     }
