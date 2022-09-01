@@ -1,0 +1,9 @@
+{
+  "name": "my-music-heroku-deploy",
+  "addons": ["logentries"],
+  "buildpacks": [
+    {
+      "url": "heroku/grandle"
+    }
+  ]
+}
