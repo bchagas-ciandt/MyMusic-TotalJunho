@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureMockMvc
 public class MusicTest {
 
-    Music music ;
+    Music music;
     @BeforeEach
     @SuppressWarnings("unchecked")
     public void setup() throws IllegalArgumentException {
