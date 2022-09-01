@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SqlDialect.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">summit-bootcamp</a> &gt; <a href="index.source.html" class="el_package">com.ciandt.summit.bootcamp2022.config</a> &gt; <span class="el_source">SqlDialect.java</span></div><h1>SqlDialect.java</h1><pre class="source lang-java linenums">package com.ciandt.summit.bootcamp2022.config;
+
+import org.hibernate.dialect.Dialect;
+import org.hibernate.dialect.function.SQLFunctionTemplate;
+import org.hibernate.dialect.function.StandardSQLFunction;
+import org.hibernate.dialect.function.VarArgsSQLFunction;
+import org.hibernate.type.StringType;
+
+import java.sql.Types;
+
+public class SqlDialect extends Dialect {
+
+<span class="nc" id="L13">    public SqlDialect() {</span>
+<span class="nc" id="L14">        registerColumnType(Types.BIT, &quot;integer&quot;);</span>
+<span class="nc" id="L15">        registerColumnType(Types.TINYINT, &quot;tinyint&quot;);</span>
+<span class="nc" id="L16">        registerColumnType(Types.SMALLINT, &quot;smallint&quot;);</span>
+<span class="nc" id="L17">        registerColumnType(Types.INTEGER, &quot;integer&quot;);</span>
+<span class="nc" id="L18">        registerColumnType(Types.BIGINT, &quot;bigint&quot;);</span>
+<span class="nc" id="L19">        registerColumnType(Types.FLOAT, &quot;float&quot;);</span>
+<span class="nc" id="L20">        registerColumnType(Types.REAL, &quot;real&quot;);</span>
+<span class="nc" id="L21">        registerColumnType(Types.DOUBLE, &quot;double&quot;);</span>
+<span class="nc" id="L22">        registerColumnType(Types.NUMERIC, &quot;numeric&quot;);</span>
+<span class="nc" id="L23">        registerColumnType(Types.DECIMAL, &quot;decimal&quot;);</span>
+<span class="nc" id="L24">        registerColumnType(Types.CHAR, &quot;char&quot;);</span>
+<span class="nc" id="L25">        registerColumnType(Types.VARCHAR, &quot;varchar&quot;);</span>
+<span class="nc" id="L26">        registerColumnType(Types.LONGVARCHAR, &quot;longvarchar&quot;);</span>
+<span class="nc" id="L27">        registerColumnType(Types.DATE, &quot;date&quot;);</span>
+<span class="nc" id="L28">        registerColumnType(Types.TIME, &quot;time&quot;);</span>
+<span class="nc" id="L29">        registerColumnType(Types.TIMESTAMP, &quot;timestamp&quot;);</span>
+<span class="nc" id="L30">        registerColumnType(Types.BINARY, &quot;blob&quot;);</span>
+<span class="nc" id="L31">        registerColumnType(Types.VARBINARY, &quot;blob&quot;);</span>
+<span class="nc" id="L32">        registerColumnType(Types.LONGVARBINARY, &quot;blob&quot;);</span>
+        // registerColumnType(Types.NULL, &quot;null&quot;);
+<span class="nc" id="L34">        registerColumnType(Types.BLOB, &quot;blob&quot;);</span>
+<span class="nc" id="L35">        registerColumnType(Types.CLOB, &quot;clob&quot;);</span>
+<span class="nc" id="L36">        registerColumnType(Types.BOOLEAN, &quot;integer&quot;);</span>
+
+<span class="nc" id="L38">        registerFunction(&quot;concat&quot;, new VarArgsSQLFunction(StringType.INSTANCE, &quot;&quot;, &quot;||&quot;, &quot;&quot;));</span>
+<span class="nc" id="L39">        registerFunction(&quot;mod&quot;, new SQLFunctionTemplate(StringType.INSTANCE, &quot;?1 % ?2&quot;));</span>
+<span class="nc" id="L40">        registerFunction(&quot;substr&quot;, new StandardSQLFunction(&quot;substr&quot;, StringType.INSTANCE));</span>
+<span class="nc" id="L41">        registerFunction(&quot;substring&quot;, new StandardSQLFunction(&quot;substr&quot;, StringType.INSTANCE));</span>
+<span class="nc" id="L42">    }</span>
+
+    public boolean supportsIdentityColumns() {
+<span class="nc" id="L45">        return true;</span>
+    }
+
+    public boolean hasDataTypeInIdentityColumn() {
+<span class="nc" id="L49">        return false; // As specify in NHibernate dialect</span>
+    }
+
+    public String getIdentityColumnString() {
+        // return &quot;integer primary key autoincrement&quot;;
+<span class="nc" id="L54">        return &quot;integer&quot;;</span>
+    }
+
+    public String getIdentitySelectString() {
+<span class="nc" id="L58">        return &quot;select last_insert_rowid()&quot;;</span>
+    }
+
+    public boolean supportsLimit() {
+<span class="nc" id="L62">        return true;</span>
+    }
+
+    protected String getLimitString(String query, boolean hasOffset) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        return new StringBuffer(query.length() + 20).append(query).append(hasOffset ? &quot; limit ? offset ?&quot; : &quot; limit ?&quot;)</span>
+<span class="nc" id="L67">                .toString();</span>
+    }
+
+    public boolean supportsTemporaryTables() {
+<span class="nc" id="L71">        return true;</span>
+    }
+
+    public String getCreateTemporaryTableString() {
+<span class="nc" id="L75">        return &quot;create temporary table if not exists&quot;;</span>
+    }
+
+    public boolean dropTemporaryTableAfterUse() {
+<span class="nc" id="L79">        return false;</span>
+    }
+
+    public boolean supportsCurrentTimestampSelection() {
+<span class="nc" id="L83">        return true;</span>
+    }
+
+    public boolean isCurrentTimestampSelectStringCallable() {
+<span class="nc" id="L87">        return false;</span>
+    }
+
+    public String getCurrentTimestampSelectString() {
+<span class="nc" id="L91">        return &quot;select current_timestamp&quot;;</span>
+    }
+
+    public boolean supportsUnionAll() {
+<span class="nc" id="L95">        return true;</span>
+    }
+
+    public boolean hasAlterTable() {
+<span class="nc" id="L99">        return false; // As specify in NHibernate dialect</span>
+    }
+
+    public boolean dropConstraints() {
+<span class="nc" id="L103">        return false;</span>
+    }
+
+    public String getAddColumnString() {
+<span class="nc" id="L107">        return &quot;add column&quot;;</span>
+    }
+
+    public String getForUpdateString() {
+<span class="nc" id="L111">        return &quot;&quot;;</span>
+    }
+
+    public boolean supportsOuterJoinForUpdate() {
+<span class="nc" id="L115">        return false;</span>
+    }
+
+    public String getDropForeignKeyString() {
+<span class="nc" id="L119">        throw new UnsupportedOperationException(&quot;No drop foreign key syntax supported by SQLiteDialect&quot;);</span>
+    }
+
+    public String getAddForeignKeyConstraintString(String constraintName, String[] foreignKey, String referencedTable,
+                                                   String[] primaryKey, boolean referencesPrimaryKey) {
+<span class="nc" id="L124">        throw new UnsupportedOperationException(&quot;No add foreign key syntax supported by SQLiteDialect&quot;);</span>
+    }
+
+    public String getAddPrimaryKeyConstraintString(String constraintName) {
+<span class="nc" id="L128">        throw new UnsupportedOperationException(&quot;No add primary key syntax supported by SQLiteDialect&quot;);</span>
+    }
+
+    public boolean supportsIfExistsBeforeTableName() {
+<span class="nc" id="L132">        return true;</span>
+    }
+
+    public boolean supportsCascadeDelete() {
+<span class="nc" id="L136">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
