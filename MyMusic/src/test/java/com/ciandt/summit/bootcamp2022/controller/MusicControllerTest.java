@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -68,19 +67,19 @@ public class MusicControllerTest {
         Assertions.assertEquals("pink floyd", objectDTO.getData().get(0).getArtist().getName());
     }
 
-//    @Test
-//    @DisplayName("return a object with a list of all musics when succesfull")
-//    void findMusicsWithoutParameters_shouldReturnAllMusics() {
-//        ObjectDTO objectDTO = musicController.findMusicsByMusicNameOrArtistName().getBody();
-//
-//        Assertions.assertEquals(1, objectDTO.getData().size());
-//        Assertions.assertFalse(objectDTO.getData().isEmpty());
-//        Assertions.assertNotNull(objectDTO);
-//        Assertions.assertEquals("asdasdaasdasdasd", objectDTO.getData().get(0).getId());
-//        Assertions.assertEquals("Another brick in the wall", objectDTO.getData().get(0).getName());
-//        Assertions.assertEquals("182738192738921398123", objectDTO.getData().get(0).getArtist().getId());
-//        Assertions.assertEquals("pink floyd", objectDTO.getData().get(0).getArtist().getName());
-//    }
+    @Test
+    @DisplayName("return a object with a list of all musics when succesfull")
+    void findMusicsWithoutParameters_shouldReturnAllMusics() {
+        ObjectDTO objectDTO = musicController.findMusicsByMusicNameOrArtistName("").getBody();
+
+        Assertions.assertEquals(1, objectDTO.getData().size());
+        Assertions.assertFalse(objectDTO.getData().isEmpty());
+        Assertions.assertNotNull(objectDTO);
+        Assertions.assertEquals("asdasdaasdasdasd", objectDTO.getData().get(0).getId());
+        Assertions.assertEquals("Another brick in the wall", objectDTO.getData().get(0).getName());
+        Assertions.assertEquals("182738192738921398123", objectDTO.getData().get(0).getArtist().getId());
+        Assertions.assertEquals("pink floyd", objectDTO.getData().get(0).getArtist().getName());
+    }
 
     @Test
     @DisplayName("Throws InvalidFilterException When filter has less than 3 character")
@@ -93,8 +92,5 @@ public class MusicControllerTest {
     void ThrowsEmptyListException_WhenFilterIs_NotFound() {
         Assertions.assertThrows(EmptyListException.class, () -> musicController.findMusicsByMusicNameOrArtistName("filtroinvalido"));
     }
-
-
-
 
 }
