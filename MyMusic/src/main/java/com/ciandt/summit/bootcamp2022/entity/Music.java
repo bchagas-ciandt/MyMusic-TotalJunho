@@ -1,7 +1,5 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import org.hibernate.Hibernate;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
