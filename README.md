@@ -1,6 +1,6 @@
 
 
-<div align="center"><img src="https://glamrap.pl/wp-content/uploads/2019/04/mymusic_logo.jpg" title="source:my music" /></div>
+<div align="center"><img src="images/mymusic_logo.jpg" title="source:my music" /></div>
 
 <div align="center"><h1>My Music Junho 2022</h1>  </div>
 <div align="center"><h2> CI&Ters Team </h2>   </div>
@@ -12,10 +12,11 @@ Sumário
 3. [Versionamento de Código](#versionamentoDeCodigo)
 4. [Tecnologias e Ferramentas](#tecnologiasEFerramentas)
 5. [Funcionalidades](#funcionalidades)
-6. [Banco de Dados](#BancoDeDados)
-7. [Autenticação](#autenticacao)
-8. [Gerenciamento do Projeto](#gerenciamentoDoProjeto)
-9. [Colaboradores](#colaboradores)
+6. [Relatórios de Cobertura de Testes](#CoberturaDeTestes)
+7. [Banco de Dados](#BancoDeDados)
+8. [Autenticação](#autenticacao)
+9. [Gerenciamento do Projeto](#gerenciamentoDoProjeto)
+10. [Colaboradores](#colaboradores)
 
 *******
 
@@ -60,12 +61,20 @@ Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a me
 <div id='funcionalidades'/> 
 <h3> Funcionalidades </h3>
 
-- [] Autenticação e autorização (Login/Logout);
-- [] Permite ao usuário buscar músicas por parâmetro no banco de dados;
-- [] Permitir que o usuário adicione músicas à sua playlist;
-- [] Permitir que o usuário remova músicas de sua playlist;
-- [] Implementação de cache na busca de músicas;
-- [] Alta cobertura de testes.
+- [x] Autenticação e autorização (Login/Logout);
+- [x] Permite ao usuário buscar músicas por parâmetro no banco de dados;
+- [x] Permite ao usuário buscar todas as músicas no banco de dados;
+- [x] Permitir que o usuário adicione músicas à sua playlist;
+- [x] Permitir que o usuário remova músicas de sua playlist;
+- [x] Implementação de cache na busca de músicas;
+- [x] Alta cobertura de testes.
+
+<div id='CoberturaDeTestes'/> 
+<h3> Relatórios de Cobertura de Testes </h3>
+<h5> Relatório Jacoco</h5>
+<div align="center"><img src="images/relatorioCoberturaDetestesJacoco02092022.png" title="source:relatório jacoco" /></div>
+<h5> Relatório Pitest</h5>
+<div align="center"><img src="images/relatórioCoberturaTesteMutacao.png" title="source:relatório pitest" /></div>
 
 <div id='BancoDeDados'/> 
 <h3> Banco de Dados </h3>

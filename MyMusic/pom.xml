@@ -165,6 +165,14 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/ciandt/summit/bootcamp2022/config/*</exclude>
+                        <exclude>com/ciandt/summit/bootcamp2022/config/interceptor/*</exclude>
+                        <exclude>com/ciandt/summit/bootcamp2022/DTO/*</exclude>
+                        <exclude>com/ciandt/summit/bootcamp2022/exception/*</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
