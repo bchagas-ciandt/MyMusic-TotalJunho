@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,4 +29,9 @@ public class UserController {
         return ResponseEntity.ok(userOptional.get());
     }
 
+    @ApiOperation(value = "Retorna todos os usuários")
+    @GetMapping
+    public ResponseEntity<List<User>> findAll(){
+        return ResponseEntity.ok(userService.findAllUseres());
+    }
 }
