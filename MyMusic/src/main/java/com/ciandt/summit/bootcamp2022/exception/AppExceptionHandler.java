@@ -121,6 +121,18 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleUserNotFoundException(UserNotFoundException e,
+                                                                                           WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.NOT_FOUND.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NOT_FOUND);
+    }
+
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
