@@ -1,0 +1,230 @@
+2022-08-29 14:56:52,964 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 28930 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-08-29 14:56:52,966 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-08-29 14:56:53,880 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-08-29 14:56:53,889 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-29 14:56:53,890 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-08-29 14:56:53,890 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-29 14:56:53,938 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-08-29 14:56:53,938 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 937 ms
+2022-08-29 14:56:54,397 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-08-29 14:56:54,414 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-08-29 14:56:54,423 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-08-29 14:56:54,434 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 1.841 seconds (JVM running for 2.261)
+2022-08-29 14:57:22,699 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-29 14:57:22,700 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-08-29 14:57:22,704 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Completed initialization in 4 ms
+2022-08-29 14:57:22,791 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Recebido requisição para criação de token para chave: teste
+2022-08-29 14:57:22,845 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Token gerado com sucesso
+2022-08-29 14:57:32,967 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-08-29 14:57:32,970 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Token validado com sucesso
+2022-08-29 14:58:03,497 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-08-29 14:58:03,499 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-08-29 14:58:16,083 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Recebido requisição para geração de token: teste
+2022-08-29 14:58:16,085 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Token validado com sucesso
+2022-08-29 14:59:16,479 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Recebido requisição para geração de token: teste
+2022-08-29 14:59:16,481 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Token validado com sucesso
+2022-08-29 14:59:20,692 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Recebido requisição para geração de token: teste
+2022-08-29 14:59:20,693 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Token validado com sucesso
+2022-08-29 14:59:59,560 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-10] Recebido requisição para geração de token: teste
+2022-08-29 14:59:59,561 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-10] Token validado com sucesso
+2022-08-29 15:00:11,844 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Recebido requisição para geração de token: teste
+2022-08-29 15:00:11,845 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Token validado com sucesso
+2022-08-29 15:00:26,373 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Recebido requisição para geração de token: teste
+2022-08-29 15:00:26,375 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Token validado com sucesso
+2022-08-29 15:01:27,259 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-08-29 15:01:27,260 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-08-29 15:01:39,915 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Recebido requisição para geração de token: teste
+2022-08-29 15:01:39,916 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Token validado com sucesso
+2022-08-29 15:01:42,726 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Recebido requisição para geração de token: teste
+2022-08-29 15:01:42,727 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Token validado com sucesso
+2022-08-29 15:01:52,619 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Recebido requisição para geração de token: teste
+2022-08-29 15:01:52,620 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Token validado com sucesso
+2022-08-29 15:02:01,170 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Recebido requisição para geração de token: teste
+2022-08-29 15:02:01,170 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Token validado com sucesso
+2022-08-29 15:02:07,605 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Recebido requisição para geração de token: teste
+2022-08-29 15:02:07,606 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-9] Token validado com sucesso
+2022-08-29 15:02:25,915 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-10] Recebido requisição para geração de token: test
+2022-08-29 15:02:25,921 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-10] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.jasypt.exceptions.EncryptionOperationNotPossibleException] with root cause
+org.jasypt.exceptions.EncryptionOperationNotPossibleException: null
+	at org.jasypt.encryption.pbe.StandardPBEByteEncryptor.decrypt(StandardPBEByteEncryptor.java:1169)
+	at org.jasypt.encryption.pbe.StandardPBEStringEncryptor.decrypt(StandardPBEStringEncryptor.java:738)
+	at com.ciandt.token.provider.services.EncryptServices.decrypt(EncryptServices.java:23)
+	at com.ciandt.token.provider.core.usecases.CreateAuthorizerUseCase.execute(CreateAuthorizerUseCase.java:18)
+	at com.ciandt.token.provider.controllers.TokenAuthorizerController.createTokenAuthorizer(TokenAuthorizerController.java:33)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2022-08-29 15:04:05,051 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 30829 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-08-29 15:04:05,053 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-08-29 15:04:05,823 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-08-29 15:04:05,829 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-29 15:04:05,830 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-08-29 15:04:05,830 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-08-29 15:04:05,863 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-08-29 15:04:05,864 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 770 ms
+2022-08-29 15:04:06,203 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-08-29 15:04:06,227 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-08-29 15:04:06,235 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-08-29 15:04:06,244 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 1.505 seconds (JVM running for 1.874)
+2022-08-29 15:04:31,160 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-29 15:04:31,161 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-08-29 15:04:31,164 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Completed initialization in 3 ms
+2022-08-29 15:04:31,246 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Recebido requisição para geração de token: teste
+2022-08-29 15:04:31,282 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Token validado com sucesso
+2022-09-02 10:21:37,625 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 307731 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-09-02 10:21:37,627 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-09-02 10:21:38,466 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-09-02 10:21:38,473 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:21:38,473 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-09-02 10:21:38,473 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-02 10:21:38,510 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-09-02 10:21:38,511 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 840 ms
+2022-09-02 10:21:38,897 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-02 10:21:38,912 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:21:38,919 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-09-02 10:21:38,929 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 1.646 seconds (JVM running for 2.15)
+2022-09-02 10:22:05,356 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-02 10:22:05,357 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-09-02 10:22:05,361 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Completed initialization in 3 ms
+2022-09-02 10:22:05,467 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Recebido requisição para criação de token para chave: teste
+2022-09-02 10:22:05,507 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Token gerado com sucesso
+2022-09-02 10:22:12,983 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-09-02 10:22:12,986 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Token validado com sucesso
+2022-09-02 10:22:16,369 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-09-02 10:22:16,372 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-09-02 10:22:17,271 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Recebido requisição para geração de token: teste
+2022-09-02 10:22:17,272 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Token validado com sucesso
+2022-09-02 10:22:18,246 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Recebido requisição para geração de token: teste
+2022-09-02 10:22:18,248 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Token validado com sucesso
+2022-09-02 10:23:39,756 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 308129 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-09-02 10:23:39,759 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-09-02 10:23:40,817 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-09-02 10:23:40,826 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:23:40,826 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-09-02 10:23:40,826 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-02 10:23:40,876 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-09-02 10:23:40,877 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1063 ms
+2022-09-02 10:23:41,407 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-02 10:23:41,424 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:23:41,437 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-09-02 10:23:41,454 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 2.085 seconds (JVM running for 2.506)
+2022-09-02 10:23:51,293 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-02 10:23:51,294 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-09-02 10:23:51,299 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Completed initialization in 5 ms
+2022-09-02 10:23:51,397 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Recebido requisição para geração de token: teste
+2022-09-02 10:23:51,438 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Token validado com sucesso
+2022-09-02 10:23:53,970 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Recebido requisição para geração de token: teste
+2022-09-02 10:23:53,973 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Token validado com sucesso
+2022-09-02 10:24:34,973 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 308511 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-09-02 10:24:34,976 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-09-02 10:24:36,106 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-09-02 10:24:36,116 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:24:36,117 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-09-02 10:24:36,117 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-02 10:24:36,172 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-09-02 10:24:36,173 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1144 ms
+2022-09-02 10:24:36,675 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-02 10:24:36,694 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:24:36,705 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-09-02 10:24:36,717 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 2.114 seconds (JVM running for 2.621)
+2022-09-02 10:24:45,718 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-02 10:24:45,719 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-09-02 10:24:45,723 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-1] Completed initialization in 4 ms
+2022-09-02 10:24:45,855 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Recebido requisição para geração de token: teste
+2022-09-02 10:24:45,905 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-1] Token validado com sucesso
+2022-09-02 10:24:48,763 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Recebido requisição para geração de token: teste
+2022-09-02 10:24:48,765 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Token validado com sucesso
+2022-09-02 10:24:50,378 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-09-02 10:24:50,380 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Token validado com sucesso
+2022-09-02 10:24:51,172 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-09-02 10:24:51,174 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-09-02 10:27:54,072 INFO org.springframework.boot.StartupInfoLogger [main] Starting TokenProviderApplication using Java 11.0.16 on lnb036041cps with PID 309022 (/home/bchagas/Documents/MyMusic-TotalJunho/TokenProvider/target/classes started by CIANDT\bchagas in /home/bchagas/Documents/MyMusic-TotalJunho)
+2022-09-02 10:27:54,075 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-09-02 10:27:55,063 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8081 (http)
+2022-09-02 10:27:55,071 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:27:55,071 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-09-02 10:27:55,071 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-09-02 10:27:55,117 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-09-02 10:27:55,118 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 990 ms
+2022-09-02 10:27:55,622 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [main] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-02 10:27:55,645 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8081"]
+2022-09-02 10:27:55,657 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8081 (http) with context path ''
+2022-09-02 10:27:55,672 INFO org.springframework.boot.StartupInfoLogger [main] Started TokenProviderApplication in 1.969 seconds (JVM running for 2.388)
+2022-09-02 10:28:10,880 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8081-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-02 10:28:10,880 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-09-02 10:28:10,884 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8081-exec-2] Completed initialization in 4 ms
+2022-09-02 10:28:10,984 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Recebido requisição para criação de token para chave: teste
+2022-09-02 10:28:11,035 INFO com.ciandt.token.provider.controllers.TokenController [http-nio-8081-exec-2] Token gerado com sucesso
+2022-09-02 10:28:14,823 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-09-02 10:28:14,827 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Token validado com sucesso
+2022-09-02 10:28:38,425 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Recebido requisição para geração de token: teste
+2022-09-02 10:28:38,426 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-4] Token validado com sucesso
+2022-09-02 10:32:36,469 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Recebido requisição para geração de token: teste
+2022-09-02 10:32:36,472 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Token validado com sucesso
+2022-09-02 10:32:38,971 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Recebido requisição para geração de token: teste
+2022-09-02 10:32:38,972 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Token validado com sucesso
+2022-09-02 10:43:17,603 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-10] Recebido requisição para geração de token: teste
+2022-09-02 10:43:17,605 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-10] Token validado com sucesso
+2022-09-02 11:06:43,667 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Recebido requisição para geração de token: teste
+2022-09-02 11:06:43,671 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-2] Token validado com sucesso
+2022-09-02 11:06:48,235 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Recebido requisição para geração de token: teste
+2022-09-02 11:06:48,238 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-3] Token validado com sucesso
+2022-09-02 11:13:53,452 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Recebido requisição para geração de token: teste
+2022-09-02 11:13:53,454 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-5] Token validado com sucesso
+2022-09-02 11:14:09,548 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Recebido requisição para geração de token: teste
+2022-09-02 11:14:09,549 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-6] Token validado com sucesso
+2022-09-02 11:14:12,223 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Recebido requisição para geração de token: teste
+2022-09-02 11:14:12,224 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-7] Token validado com sucesso
+2022-09-02 11:14:14,438 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Recebido requisição para geração de token: teste
+2022-09-02 11:14:14,439 INFO com.ciandt.token.provider.controllers.TokenAuthorizerController [http-nio-8081-exec-8] Token validado com sucesso
