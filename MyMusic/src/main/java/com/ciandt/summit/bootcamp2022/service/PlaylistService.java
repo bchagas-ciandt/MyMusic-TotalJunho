@@ -135,7 +135,7 @@ public class PlaylistService {
             if (userMusics.size() < 5) {
                 addMusicToPlaylistIfMusicDoesnotExist(music, user.getPlaylists().getMusicas(), user.getPlaylists());
             } else {
-                throw new MusicLimitReachedException("Só é possivel adicionar 5 músicas no modo comum");
+                throw new MusicLimitReachedException("Você atingiu o número máximo de músicas em sua playlist.Para adicionar mais músicas contrate o plano Premium.");
             }
         }
     }

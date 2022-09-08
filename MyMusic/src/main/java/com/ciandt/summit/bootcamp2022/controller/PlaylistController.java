@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/playlists")
-@Api(value = "api/playlists", tags = "Playlist")
+@RequestMapping("api/v1/playlists")
+@Api(value = "api/v1/playlists", tags = "Playlist")
 public class PlaylistController {
 
     @Autowired
@@ -29,8 +29,7 @@ public class PlaylistController {
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
     @PostMapping(path = "{playlistId}/{userId}/musicas")
-    public ResponseEntity<String> addMusicsToPlaylist(@
-                                                                  PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music music) {
+    public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music music) {
         String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, music);
         return ResponseEntity.ok(addMusicToPlaylist);
     }
