@@ -1,22 +1,18 @@
 package com.ciandt.summit.bootcamp2022.service;
 
-import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
-import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
-import com.ciandt.summit.bootcamp2022.exception.MusicNotFoundException;
-import com.ciandt.summit.bootcamp2022.exception.PayloadInvalidException;
-import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
+import com.ciandt.summit.bootcamp2022.entity.User;
+import com.ciandt.summit.bootcamp2022.exception.*;
 import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
+import com.ciandt.summit.bootcamp2022.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -31,25 +27,36 @@ public class PlaylistService {
     @Autowired
     private MusicRepository musicRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @CacheEvict(value = "playlists", allEntries = true)
-    public Playlist addMusicToPlaylist(String playlistId, ObjectDTO musics) {
+    public String addMusicToPlaylist(String playlistId, String userId, Music music) {
         idValidation(playlistId);
+        idValidation(userId);
 
-        logger.info("buscando playlist por id");
-        Playlist playlist = findById(playlistId);
+        logger.info("Buscando usuario por id");
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("Usúario não existe"));
 
-        payLoadValidation(musics);
+        Playlist userPlaylist = user.getPlaylists();
 
-        List<Music> playlistMusics = playlist.getMusicas();
+        logger.info("Buscando playlist por id");
+        Playlist playlist= findById(playlistId);
+
+        List<Music> playlistMusics = userPlaylist.getMusicas();
+
+        isUserPlaylist(userPlaylist, playlist);
+
+        payLoadValidation(music);
 
         logger.info("adicionando musicas na playlist");
-        addMusicToPlaylistIfMusicDoesnotExist(musics.getData(), playlist.getMusicas(), playlist);
+        addMusicToPlaylistByUserType(user, music);
 
         logger.info("Salvando playlist no banco de dados");
-        playlistRepository.save(playlist);
+        playlistRepository.save(userPlaylist);
 
-        logger.info("retornando playlist com sucesso!");
-        return playlistRepository.findById(playlistId).get();
+        return "Música adicionada com sucesso!";
     }
     @CacheEvict(value = "playlists", allEntries = true)
     public void removeMusicFromPlaylist(String playlistId, String musicId) {
@@ -61,7 +68,7 @@ public class PlaylistService {
 
         logger.info("buscando música por id");
         Music musicToBeRemoved = findMusicById(musicId);
-        
+
         logger.info("verificando se música existe na playlist");
         boolean musicExistInPlaylist = playlist.getMusicas().contains(musicToBeRemoved);
 
@@ -98,28 +105,54 @@ public class PlaylistService {
         }
     }
 
-    private void payLoadValidation(ObjectDTO musics) {
-        for (Music music : musics.getData()) {
-            String id = music.getId();
-            Music musicReturn = musicRepository
-                    .findById(id)
-                    .orElseThrow(() -> new MusicNotFoundException("Música não existe"));
-            if (!music.equals(musicReturn)) {
-                logger.error("Payload da musica passado de forma incorreta");
-                throw new PayloadInvalidException("Payload incorreto: Atributo inválido");
+    private void payLoadValidation(Music music) {
+        String id = music.getId();
+        Music musicReturn = musicRepository
+                .findById(id)
+                .orElseThrow(() -> new MusicNotFoundException("Música não existe"));
+        if (!music.equals(musicReturn)) {
+            logger.error("Payload da musica passado de forma incorreta");
+            throw new PayloadInvalidException("Payload incorreto: Atributo inválido");
+        }
+    }
+
+    private void addMusicToPlaylistIfMusicDoesnotExist(Music music, List<Music> playlistMusics, Playlist playlist) {
+        if (!playlistMusics.contains(music)) {
+            logger.info("Música adicionada na playlist");
+            playlist.getMusicas().add(music);
+        } else {
+            logger.info("Música já existe na playlist");
+            throw new MusicAlreadyExistInPlaylist("Música já existe na playlist");
+        }
+    }
+
+    private void addMusicToPlaylistByUserType(User user, Music music) {
+        if (isUserPremium(user)) {
+            logger.info("adicionando musica na playlist");
+            addMusicToPlaylistIfMusicDoesnotExist(music, user.getPlaylists().getMusicas(), user.getPlaylists());
+        } else {
+            List<Music> userMusics = user.getPlaylists().getMusicas();
+            if (userMusics.size() < 5) {
+                addMusicToPlaylistIfMusicDoesnotExist(music, user.getPlaylists().getMusicas(), user.getPlaylists());
+            } else {
+                throw new MusicLimitReachedException("Só é possivel adicionar 5 músicas no modo comum");
             }
         }
     }
 
-    private void addMusicToPlaylistIfMusicDoesnotExist(List<Music> musics, List<Music> playlistMusics, Playlist playlist) {
-        for (Music music : musics) {
-            if (!playlistMusics.contains(music)) {
-                logger.info("Música adicionada na playlist");
-                playlist.getMusicas().add(music);
-            } else {
-                logger.info("Música já existe na playlist");
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Música já existe na playlist");
-            }
+    private boolean isUserPremium(User user) {
+        String tipoUsuario = user.getUserType().getDescription();
+        if (tipoUsuario.equalsIgnoreCase("premium")) {
+            return true;
         }
+        return false;
     }
+
+    private boolean isUserPlaylist(Playlist p1, Playlist p2) {
+        if (!p1.getId().equals(p2.getId())) {
+            throw new PlaylistNotFoundException("Não existe essa playlist no perfil do usuario");
+        }
+        return true;
+    }
+
 }
