@@ -133,6 +133,18 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(MusicAlreadyExistInPlaylist.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleUserNotFoundException(MusicAlreadyExistInPlaylist e,
+                                                                                      WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+                new Date(),
+                e.getMessage(),
+                request.getDescription(false),
+                HttpStatus.BAD_REQUEST.value()
+        );
+        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+    }
+
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
