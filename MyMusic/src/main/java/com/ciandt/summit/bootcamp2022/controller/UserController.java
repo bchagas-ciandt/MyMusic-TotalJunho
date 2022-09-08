@@ -32,6 +32,6 @@ public class UserController {
     @ApiOperation(value = "Retorna todos os usuários")
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
-        return ResponseEntity.ok(userService.findAllUseres());
+        return ResponseEntity.ok(userService.findAllUsers());
     }
 }
