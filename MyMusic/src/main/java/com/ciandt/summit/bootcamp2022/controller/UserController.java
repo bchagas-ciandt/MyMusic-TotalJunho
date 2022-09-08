@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/user")
-@Api(value = "api/v1/user", tags = "Usuários")
+@Api(value = "api/v1/user", tags = "Usuarios")
 public class UserController {
 
     @Autowired
