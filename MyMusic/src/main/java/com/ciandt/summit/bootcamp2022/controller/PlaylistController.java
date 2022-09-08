@@ -1,6 +1,6 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
-import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
+import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.service.PlaylistService;
 import io.swagger.annotations.Api;
@@ -28,10 +28,11 @@ public class PlaylistController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
-    @PostMapping(path = "{playlistId}/musicas")
-    public ResponseEntity<Playlist> addMusicsToPlaylist(@PathVariable String playlistId, @RequestBody ObjectDTO musics) {
-        Playlist playlist = playlistService.addMusicToPlaylist(playlistId, musics);
-        return ResponseEntity.ok(playlist);
+    @PostMapping(path = "{playlistId}/{userId}/musicas")
+    public ResponseEntity<String> addMusicsToPlaylist(@
+                                                                  PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music music) {
+        String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, music);
+        return ResponseEntity.ok(addMusicToPlaylist);
     }
 
     @ApiOperation(value = "remove música da playlist")
