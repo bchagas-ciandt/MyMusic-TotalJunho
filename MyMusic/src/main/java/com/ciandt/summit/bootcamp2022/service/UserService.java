@@ -28,7 +28,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public List<User> findAllUseres(){
+    public List<User> findAllUsers(){
         logger.info("Buscando todos os usuários.");
         emptyUserListShouldTrowException(userRepository.findAll());
         return userRepository.findAll();
@@ -49,7 +49,7 @@ public class UserService {
     private void emptyUserListShouldTrowException(List<User> useres){
         if(useres.isEmpty()){
             logger.error("Lista vazia para busca de usuários.");
-            throw new EmptyListException("Não foi encontrado nenbhum usuário para busca.");
+            throw new EmptyListException("Não foi encontrado nenhum usuário para busca.");
         }
     }
 }
