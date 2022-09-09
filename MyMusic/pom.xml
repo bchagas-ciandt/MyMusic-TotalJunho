@@ -170,6 +170,7 @@
                         <exclude>com/ciandt/summit/bootcamp2022/config/*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/config/interceptor/*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/DTO/*</exclude>
+                        <exclude>com/ciandt/summit/bootcamp2022/SummitBootcampApplication.*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/exception/*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/entity/*</exclude>
                     </excludes>
