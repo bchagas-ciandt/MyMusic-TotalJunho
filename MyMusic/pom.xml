@@ -171,6 +171,7 @@
                         <exclude>com/ciandt/summit/bootcamp2022/config/interceptor/*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/DTO/*</exclude>
                         <exclude>com/ciandt/summit/bootcamp2022/exception/*</exclude>
+                        <exclude>com/ciandt/summit/bootcamp2022/entity/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -204,12 +205,10 @@
                     <targetClasses>
                         <param>com.ciandt.summit.bootcamp2022.controller.*</param>
                         <param>com.ciandt.summit.bootcamp2022.service.*</param>
-                        <param>com.ciandt.summit.bootcamp2022.entity.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.ciandt.summit.bootcamp2022.controller.*</param>
                         <param>com.ciandt.summit.bootcamp2022.service.*</param>
-                        <param>com.ciandt.summit.bootcamp2022.entity.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

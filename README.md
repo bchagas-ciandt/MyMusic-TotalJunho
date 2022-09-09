@@ -72,9 +72,9 @@ Para controle de versão, o Git foi a ferramenta utilizada neste projeto. E a me
 <div id='CoberturaDeTestes'/> 
 <h3> Relatórios de Cobertura de Testes </h3>
 <h5> Relatório Jacoco</h5>
-<div align="center"><img src="images/relatorioCoberturaDetestesJacoco02092022.png" title="source:relatório jacoco" /></div>
+<div align="center"><img src="images/relatorioJaCoCo.png" title="source:relatório jacoco" /></div>
 <h5> Relatório Pitest</h5>
-<div align="center"><img src="images/relatórioCoberturaTesteMutacao.png" title="source:relatório pitest" /></div>
+<div align="center"><img src="images/relatorioPitest.png" title="source:relatório pitest" /></div>
 
 <div id='BancoDeDados'/> 
 <h3> Banco de Dados </h3>

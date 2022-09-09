@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/user")
-@Api(value = "api/v1/user", tags = "Usuarios")
+@RequestMapping("api/v1/users")
+@Api(value = "api/v1/users", tags = "Usuarios")
 public class UserController {
 
     @Autowired
@@ -32,6 +32,6 @@ public class UserController {
     @ApiOperation(value = "Retorna todos os usuários")
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
-        return ResponseEntity.ok(userService.findAllUseres());
+        return ResponseEntity.ok(userService.findAllUsers());
     }
 }
