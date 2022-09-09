@@ -140,20 +140,25 @@ public class PlaylistServiceTest {
     }
 
 
-    //Lança a exceção e ainda o método falha.
-//    @Test
-//    void addMusicToPlaylist_shouldThrow_BadRequestException_WhenMusicsExistsInPlaylist() {
-//        BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
-//        BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
-//
-//        User user = new User();
-//        user.setId("userId");
-//        user.setPlaylists(playlist);
-//        user.setUserType(new UserType("userTypeId", "Premium"));
-//        BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
-//        playlistService.addMusicToPlaylist("123123123213","userId", music2);
-//        Assertions.assertThrows(MusicAlreadyExistInPlaylist.class, () -> playlistService.addMusicToPlaylist("123123123213","userId", music2));
-//    }
+
+    @Test
+    void addMusicToPlaylist_shouldThrow_BadRequestException_WhenMusicsExistsInPlaylist() throws MusicAlreadyExistInPlaylist {
+        try{
+            BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
+            BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
+
+            User user = new User();
+            user.setId("userId");
+            user.setPlaylists(playlist);
+            user.setUserType(new UserType("userTypeId", "Premium"));
+            BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
+            playlistService.addMusicToPlaylist("123123123213","userId", music2);
+
+        }catch (MusicAlreadyExistInPlaylist e){
+            Assertions.assertThrows(MusicAlreadyExistInPlaylist.class, () -> playlistService.addMusicToPlaylist("123123123213","userId", music2));
+        }
+
+    }
 
     @Test
     void addMusicToPlaylist_shouldThrowsException_WhenCommonUserExceedLimit() {

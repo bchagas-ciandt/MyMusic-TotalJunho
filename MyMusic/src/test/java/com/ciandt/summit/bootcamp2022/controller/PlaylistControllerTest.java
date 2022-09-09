@@ -120,37 +120,6 @@ class PlaylistControllerTest {
                 result.getResponse().getContentAsString());
     }
 
-//    @Test
-//    void addMusicFromPlaylistShouldThrowsExceptionWhenCommonUserExceedLimit() throws Exception {
-//        Music music1 = new Music("music1Id", "The music 1", new Artist("artist1Id","Name Artist 1"));
-//        Music music2 = new Music("music2Id", "The music 2", new Artist("artist2Id","Name Artist 2"));
-//        Music music3 = new Music("music3Id", "The music 3", new Artist("artist3Id","Name Artist 3"));
-//        Music music4 = new Music("music4Id", "The music 4", new Artist("artist4Id","Name Artist 4"));
-//        Music music5 = new Music("music5Id", "The music 5", new Artist("artist5Id","Name Artist 5"));
-//        Music music6 = new Music("music6Id", "The music 6", new Artist("artist6Id","Name Artist 6"));
-//        List<Music> musicList = new ArrayList<>(Arrays.asList(music1, music2, music3, music4, music5));
-//        User user = new User();
-//        user.setId("userId");
-//        user.setUserType(new UserType("userTypeId","Comum"));
-//        Playlist playlist = new Playlist("playlistId",musicList);
-//
-//        given(this.service.addMusicToPlaylist("playlistId","userId", music6))
-//                .willReturn("Você atingiu o número máximo de músicas em sua playlist.Para adicionar mais músicas contrate o plano Premium.");
-//
-//        String requestJson = " {\n     \"id\": \"music6Id\", \n     \"name\": \"The music 6\",\n" +
-//                "     \"artist\": {\n       \"id\": \"artis6tId\", \n       \"name\": \"Name Artist 6\" \n      } \n" +
-//                "  }";
-//
-//        RequestBuilder request = post("/api/v1/playlists/playlistId/userId/musicas")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(requestJson);
-//
-//        MvcResult result = mockMvc.perform(request).andExpect(status().isBadRequest()).andReturn();
-//
-//        assertEquals("Você atingiu o número máximo de músicas em sua playlist.Para adicionar mais músicas contrate o plano Premium.",
-//                result.getResponse().getContentAsString());
-//    }
-
     @Test
     void removeMusicFromPlaylistShouldReturnStatusOk() throws Exception {
 
