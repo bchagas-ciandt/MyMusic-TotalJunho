@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/music")
-@Api(value = "api/v1/music", tags = "Músicas")
+@RequestMapping("api/v1/musics")
+@Api(value = "api/v1/musics", tags = "Músicas")
 public class MusicController {
 
     @Autowired
