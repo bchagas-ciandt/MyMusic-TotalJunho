@@ -5,12 +5,14 @@ import com.ciandt.summit.bootcamp2022.entity.User;
 import com.ciandt.summit.bootcamp2022.entity.UserType;
 import com.ciandt.summit.bootcamp2022.exception.EmptyListException;
 import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
+import com.ciandt.summit.bootcamp2022.exception.UserNotFoundException;
 import com.ciandt.summit.bootcamp2022.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -40,13 +42,13 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("return a list of all users")
-    void findAllUsers_shouldReturnListOfMusic(){
+    void findAllUsers_shouldReturnListOfUsers(){
         List<User> userList = new ArrayList<>(Arrays.asList(user1,user2));
         BDDMockito.when(userRepository.findAll()).thenReturn(userList);
 
-        Assertions.assertFalse(userList.isEmpty());
+        Assertions.assertFalse(userService.findAllUsers().isEmpty());
         Assertions.assertNotNull(userList);
-        Assertions.assertEquals(2, userList.size());
+        Assertions.assertEquals(2, userService.findAllUsers().size());
         Assertions.assertEquals("user1Id", userList.get(0).getId());
         Assertions.assertEquals("user1Name", userList.get(0).getName());
         Assertions.assertEquals("user2Id", userList.get(1).getId());
@@ -60,18 +62,25 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("return a list of all users")
+    @DisplayName("return a user by id ")
     void findUserById_shouldReturnUser_WhenIdisOk() {
 
-    BDDMockito.when(userRepository.findById("user1Id")).thenReturn(Optional.of(user1));
+    BDDMockito.when(userRepository.findById(ArgumentMatchers.anyString())).thenReturn(Optional.of(user1));
+    BDDMockito.when(userRepository.existsById(ArgumentMatchers.anyString())).thenReturn(true);
     Assertions.assertNotNull(user1);
-    Assertions.assertEquals("user1Name", user1.getName());
+    Assertions.assertEquals(Optional.of(user1), userService.findUserById("asdasda"));
     }
 
     @Test
     @DisplayName("Throws InvalidIdException When id is not ok")
     void findUserById_shouldThrowsInvalidIdException_WhenIdIsNoTOk() {
         Assertions.assertThrows(InvalidIdException.class, ()-> userService.findUserById(null));
+    }
+
+    @Test
+    @DisplayName("Throws UserNotFoundException when user doesnot exist")
+    void findUserById_shouldThrowsUserNotFoundException_WhenUserDoesnotExist() {
+        Assertions.assertThrows(UserNotFoundException.class, ()-> userService.findUserById("50"));
     }
 
 }
