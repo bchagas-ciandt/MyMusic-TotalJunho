@@ -72,9 +72,15 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("Throws InvalidIdException When id is not ok")
-    void findUserById_shouldThrowsInvalidIdException_WhenIdIsNoTOk() {
+    @DisplayName("Throws InvalidIdException When id is null")
+    void findUserById_shouldThrowsInvalidIdException_WhenIdIsNull() {
         Assertions.assertThrows(InvalidIdException.class, ()-> userService.findUserById(null));
+    }
+
+    @Test
+    @DisplayName("Throws InvalidIdException When id is Empty")
+    void findUserById_shouldThrowsInvalidIdException_WhenIdIsEmpty() {
+        Assertions.assertThrows(InvalidIdException.class, ()-> userService.findUserById(" "));
     }
 
     @Test

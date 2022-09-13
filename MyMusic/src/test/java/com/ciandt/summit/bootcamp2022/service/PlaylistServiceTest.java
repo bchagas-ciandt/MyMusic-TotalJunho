@@ -8,16 +8,14 @@ import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import com.ciandt.summit.bootcamp2022.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @ExtendWith(SpringExtension.class)
 @DirtiesContext
@@ -55,16 +53,19 @@ public class PlaylistServiceTest {
     List<Playlist> playlists = new ArrayList<>(Arrays.asList(playlist));
 
     @Test
+    @DisplayName("should throw PlaylistNotFoundException when playlist is not found")
     void findById_shouldThrowPlaylistNotFoundException_WhenPlaylistNotFound() {
         Assertions.assertThrows(PlaylistNotFoundException.class, () -> playlistService.findById("asdasdasdasd"));
     }
 
     @Test
+    @DisplayName("should throw MusicNotFoundException when music is not found")
     void findMusicById_shouldThrowMusicNotFoundException_WhenMusicNotFound() {
         Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById("1232131232"));
     }
 
     @Test
+    @DisplayName("should throw MusicNotFoundException when music is not found")
     void findMusicById_shouldReturnMusic_WhenSuccessful() {
         BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
         String id = "123123123";
@@ -74,11 +75,19 @@ public class PlaylistServiceTest {
     }
 
     @Test
-    void addMusicToPlaylist_shouldReturnInvalidIdException_WhenPlaylistIdIsInvalid() {
+    @DisplayName("should throw InvalidIdException when playlist id is null")
+    void addMusicToPlaylist_shouldReturnInvalidIdException_WhenPlaylistIdIsNull() {
         Assertions.assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(null, null, null));
     }
 
     @Test
+    @DisplayName("should throw InvalidIdException when playlist id is empty")
+    void addMusicToPlaylist_shouldReturnInvalidIdException_WhenPlaylistIdIsEmpty() {
+        Assertions.assertThrows(InvalidIdException.class, () -> playlistService.addMusicToPlaylist(" ", null, null));
+    }
+
+    @Test
+    @DisplayName("should throw PayloadInvalidException when music body is invalid")
     void addMusicToPlaylist_shouldReturnPayloadInvalidException_WhenMusicsBodyinisInvalid() {
         UserType comum = new UserType("12312312", "Comum");
         UserType premium = new UserType("123123", "Premium");
@@ -97,6 +106,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should add music to playlist when succesfull")
     void addMusicToPlaylist_shouldAddMusicToplaylist_WhenSuccesfull() {
         BDDMockito.when(musicRepository.findById("12321312312")).thenReturn(Optional.of(music1));
         BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
@@ -110,6 +120,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should return NullPointerException when objectDTO is null")
     void addMusicToPlaylist_shouldReturnNullPointerException_WhenObjectDTOIIsNull() {
         BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
         User user = new User();
@@ -121,12 +132,14 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should return all playlist when succesfull")
     void findAll_ShoulReturnAllPlaylist() {
         BDDMockito.when(playlistRepository.findAll()).thenReturn(playlists);
         Assertions.assertEquals(1, playlistService.findAll().size());
     }
 
     @Test
+    @DisplayName("Should return a by id playlist when succesfull")
     void findById_shouldPlaylist_WhenSuccessful() {
         BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
         String id = "123123123213";
@@ -139,7 +152,8 @@ public class PlaylistServiceTest {
 
 
     @Test
-    void addMusicToPlaylist_shouldThrow_BadRequestException_WhenMusicsExistsInPlaylist() throws MusicAlreadyExistInPlaylist {
+    @DisplayName("Should throw MusicAlreadyExistInPlaylist when music already exist in playlist")
+    void addMusicToPlaylist_shouldThrow_MusicAlreadyExistInPlaylist_WhenMusicsExistsInPlaylist() throws MusicAlreadyExistInPlaylist {
         try{
             BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
             BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
@@ -158,7 +172,8 @@ public class PlaylistServiceTest {
     }
 
     @Test
-    void addMusicToPlaylist_shouldThrowsException_WhenCommonUserExceedLimit() {
+    @DisplayName("Should throw MusicLimitReachedException when User exced musics limit")
+    void addMusicToPlaylist_shouldThrowsMusicLimitReachedException_WhenCommonUserExceedLimit() {
 
         Music music6 = new Music("music6Id", "The music 6", new Artist("artist6Id","Name Artist 6"));
         BDDMockito.when(musicRepository.findById("music6Id")).thenReturn(Optional.of(music6));
@@ -173,6 +188,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should add musics to playlist when succesfull")
     void addMusicToPlaylist_shouldAddMusicsToPlaylist_WhenSuccesfull() {
         BDDMockito.when(musicRepository.findById("12321312312")).thenReturn(Optional.of(music1));
         BDDMockito.when(playlistRepository.findById("12312312321")).thenReturn(Optional.of(playlist));
@@ -186,22 +202,19 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should throw InvalidIdException when playlist id is invalid")
     void removeMusicFromPlaylist_shouldThrowInvalidIdException_WhenPlaylistidIsInvalid() {
         Assertions.assertThrows(InvalidIdException.class, () -> playlistService.removeMusicFromPlaylist(null, "123123123"));
     }
 
     @Test
+    @DisplayName("Should throw invalidIdException when music is is invalid")
     void removeMusicFromPlaylist_shouldThrowInvalidIdException_WhenMusicidIsInvalid() {
         Assertions.assertThrows(InvalidIdException.class, () -> playlistService.removeMusicFromPlaylist("123123123213", null));
     }
 
     @Test
-    void removeMusicFromPlaylist_shouldThrow_MusicNotFoundException_WhenMusicsDoesnotExistsInPlaylist() {
-        BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
-        Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.removeMusicFromPlaylist("123123123213", "12321312312"));
-    }
-
-    @Test
+    @DisplayName("Should remove music if music exist in playlist")
     void removeMusicFromPlaylist_shouldRemoveMusic_IfMusicExistInPlaylist() {
         BDDMockito.when(musicRepository.findById("12321312312")).thenReturn(Optional.of(music1));
         BDDMockito.when(playlistRepository.findById("12312312321")).thenReturn(Optional.of(playlist2));
@@ -209,6 +222,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should throw MusicNotFoundException when music")
     void removeMusicFromPlaylist_shouldThrowMusicNotFoundException_WhenMusicDoesnotExistInPlaylist() {
         BDDMockito.when(musicRepository.findById("12321312312")).thenReturn(Optional.of(music1));
         BDDMockito.when(playlistRepository.findById("12312312321")).thenReturn(Optional.of(playlist));
@@ -221,6 +235,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should throw PlaylistNotFoundException when playlist is not from user")
     void addMusicToPlaylist_shouldThrowsPlaylistNotFoundException_WhenPlaylistIsNotUserPlaylist() {
         User user = new User();
         user.setId("userId");
@@ -234,6 +249,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
+    @DisplayName("Should add music when common user has less than 5 musics in playlist")
     void addMusicToPlaylist_shouldAddMusicToPlaylist_WhenCommonUserHasLessThan5Musics() {
 
         Music music6 = new Music("music4Id", "The music 4", new Artist("artist4Id","Name Artist 4"));
