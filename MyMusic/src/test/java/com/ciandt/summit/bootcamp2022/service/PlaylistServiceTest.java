@@ -10,10 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.BDDMockito;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -221,6 +218,34 @@ public class PlaylistServiceTest {
             Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.removeMusicFromPlaylist("12312312321", "12321312312"));
             ;
         }
+    }
+
+    @Test
+    void addMusicToPlaylist_shouldThrowsPlaylistNotFoundException_WhenPlaylistIsNotUserPlaylist() {
+        User user = new User();
+        user.setId("userId");
+        user.setPlaylists(playlist2);
+        user.setUserType(new UserType("userTypeId", "Premium"));
+        Music music = new Music("12321312312", "asdasdas", new Artist("id123213123", "Metallica"));
+        BDDMockito.when(playlistRepository.findById(ArgumentMatchers.anyString())).thenReturn(Optional.of(playlist));
+        BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
+        BDDMockito.when(musicRepository.findById(ArgumentMatchers.anyString())).thenReturn(Optional.of(music));
+        Assertions.assertThrows(PlaylistNotFoundException.class, () -> playlistService.addMusicToPlaylist("12312312321", "userId", music));
+    }
+
+    @Test
+    void addMusicToPlaylist_shouldAddMusicToPlaylist_WhenCommonUserHasLessThan5Musics() {
+
+        Music music6 = new Music("music4Id", "The music 4", new Artist("artist4Id","Name Artist 4"));
+        BDDMockito.when(musicRepository.findById(ArgumentMatchers.anyString())).thenReturn(Optional.of(music6));
+        BDDMockito.when(playlistRepository.findById("12312312321")).thenReturn(Optional.of(playlist));
+        User user = new User();
+        user.setId("userId");
+        user.setPlaylists(playlist);
+        user.setUserType(new UserType("userTypeId", "Comum"));
+        BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
+
+        Assertions.assertEquals("Música adicionada com sucesso!", playlistService.addMusicToPlaylist("12312312321", "userId", music6));
     }
 
 

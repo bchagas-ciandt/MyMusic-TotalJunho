@@ -4,6 +4,7 @@ import com.ciandt.summit.bootcamp2022.exception.UnauthorizedRequestException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,8 @@ public class Interceptor implements HandlerInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(Interceptor.class);
 
-    private final String TOKENURL = "http://localhost:8081/api/v1/token/authorizer";
+    @Value("${base.token.url}")
+    private String tokenUrl;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -31,7 +33,7 @@ public class Interceptor implements HandlerInterceptor {
         throw new UnauthorizedRequestException("nome ou token de autenticação inválidos");
        }
 
-        URI url = new URI(TOKENURL);
+        URI url = new URI(tokenUrl);
 
         InterceptorReqBody interceptorReqBody = new InterceptorReqBody(name, token);
         HttpEntity<InterceptorReqBody> httpEntity = new HttpEntity<>(interceptorReqBody);
