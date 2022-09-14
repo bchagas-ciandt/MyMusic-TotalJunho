@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Cacheable("userId")
     public Optional<User> findUserById(String id){
         idValidation(id);
         userExiste(id);
@@ -28,6 +30,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    @Cacheable("allUsers")
     public List<User> findAllUsers(){
         logger.info("Buscando todos os usuários.");
         emptyUserListShouldTrowException(userRepository.findAll());
