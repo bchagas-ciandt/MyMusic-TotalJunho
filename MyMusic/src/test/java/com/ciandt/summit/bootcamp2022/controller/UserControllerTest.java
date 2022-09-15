@@ -1,7 +1,9 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
 import com.ciandt.summit.bootcamp2022.entity.User;
+import com.ciandt.summit.bootcamp2022.exception.InvalidIdException;
 import com.ciandt.summit.bootcamp2022.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -17,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,4 +47,14 @@ public class UserControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    void findUserByIdShouldReturnStatusBadRequestWhenIdIsNull() throws InvalidIdException{
+        try {
+            userService.findUserById(null);
+        }catch (InvalidIdException e){
+            Exception error = Assertions.assertThrows(InvalidIdException.class, ()-> userService.findUserById(null));
+            Assertions.assertEquals("Id não não pode ser nulo ou branco", error.getMessage());
+        }
+
+    }
 }
