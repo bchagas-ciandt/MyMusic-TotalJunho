@@ -44,8 +44,6 @@ public class PlaylistService {
         logger.info("Buscando playlist por id");
         Playlist playlist= findById(playlistId);
 
-        List<Music> playlistMusics = userPlaylist.getMusicas();
-
         isUserPlaylist(userPlaylist, playlist);
 
         payLoadValidation(music);

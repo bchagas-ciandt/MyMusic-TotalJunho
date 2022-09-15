@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
 import com.ciandt.summit.bootcamp2022.entity.User;
+import com.ciandt.summit.bootcamp2022.exception.UserNotFoundException;
 import com.ciandt.summit.bootcamp2022.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +27,10 @@ public class UserController {
     @GetMapping(path =  "{userId}")
     public ResponseEntity<User> findUserById(@PathVariable String userId){
         Optional<User> userOptional = userService.findUserById(userId);
+        if (userOptional.isEmpty()){
+            throw new UserNotFoundException("Usuário não encontrado.");
+        }
+
         return ResponseEntity.ok(userOptional.get());
     }
 

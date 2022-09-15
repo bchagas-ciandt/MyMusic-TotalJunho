@@ -29,8 +29,8 @@ public class PlaylistController {
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
     @PostMapping(path = "{playlistId}/{userId}/musics")
-    public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music music) {
-        String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, music);
+    public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music newMusic) {
+        String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, newMusic);
         return ResponseEntity.ok(addMusicToPlaylist);
     }
 

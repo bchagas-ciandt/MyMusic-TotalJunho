@@ -7,7 +7,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -43,13 +42,13 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(InvalidFilterException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleInvalidFilterException(InvalidFilterException e,
                                                                                        WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+        ExceptionResponseMessage exceptionResponseMessage400 = new ExceptionResponseMessage(
                 new Date(),
                 e.getMessage(),
                 request.getDescription(false),
                 HttpStatus.BAD_REQUEST.value()
         );
-        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(exceptionResponseMessage400, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidIdException.class)
@@ -159,12 +158,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                ex.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+
         return this.handleExceptionInternal(ex, (Object)null, headers, status, request);
     }
 }

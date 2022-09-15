@@ -14,14 +14,14 @@ public class UserType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     @Column(name = "Descricao")
-    private String Description;
+    private String description;
 
     public UserType() {
     }
 
     public UserType(String id, String description) {
         this.id = id;
-        Description = description;
+        this.description = description;
     }
 
     public String getId() {
@@ -33,11 +33,11 @@ public class UserType implements Serializable {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     @Override
@@ -45,19 +45,19 @@ public class UserType implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserType userType = (UserType) o;
-        return Objects.equals(id, userType.id) && Objects.equals(Description, userType.Description);
+        return Objects.equals(id, userType.id) && Objects.equals(description, userType.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Description);
+        return Objects.hash(id, description);
     }
 
     @Override
     public String toString() {
         return "UserType{" +
                 "id='" + id + '\'' +
-                ", Description='" + Description + '\'' +
+                ", Description='" + description + '\'' +
                 '}';
     }
 }

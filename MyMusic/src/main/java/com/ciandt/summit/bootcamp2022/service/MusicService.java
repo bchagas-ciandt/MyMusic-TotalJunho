@@ -46,9 +46,7 @@ public class MusicService {
         emptyPlaylistShouldThrowException(musics);
         List<Music> listMusicsSorted = musics.stream().sorted((a1, a2)->a1.getArtist().getName()
                 .compareTo(a2.getArtist().getName())).collect(Collectors.toList());
-        ObjectDTO objectDTO = ObjectDTO.builder().data(listMusicsSorted).build();
-
-        return objectDTO;
+        return ObjectDTO.builder().data(listMusicsSorted).build();
     }
     private void emptyPlaylistShouldThrowException(List<Music> musics){
         if (musics.isEmpty()) {
