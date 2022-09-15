@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("${api.version}/playlists")
-@Api(value = "${api.version}/playlists", tags = "Playlist")
+@RequestMapping("api/v1/playlists")
+@Api(value = "api/v1/playlists", tags = "Playlist")
 public class PlaylistController {
 
     @Autowired
