@@ -37,14 +37,13 @@ public class PlaylistService {
 
         logger.info("Buscando usuario por id");
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException("Usúario não existe"));
+                .orElseThrow(() -> new UserNotFoundException("Usuário não existe"));
 
         Playlist userPlaylist = user.getPlaylists();
 
         logger.info("Buscando playlist por id");
         Playlist playlist= findById(playlistId);
 
-        List<Music> playlistMusics = userPlaylist.getMusicas();
 
         isUserPlaylist(userPlaylist, playlist);
 
@@ -150,7 +149,7 @@ public class PlaylistService {
 
     private boolean isUserPlaylist(Playlist p1, Playlist p2) {
         if (!p1.getId().equals(p2.getId())) {
-            throw new PlaylistNotFoundException("Não existe essa playlist no perfil do usuario");
+            throw new PlaylistNotFoundException("Não existe essa playlist no perfil do usuário");
         }
         return true;
     }

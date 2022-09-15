@@ -19,7 +19,7 @@ import java.util.*;
 
 @ExtendWith(SpringExtension.class)
 @DirtiesContext
-public class PlaylistServiceTest {
+class PlaylistServiceTest {
 
     @Mock
     private PlaylistRepository playlistRepository;
@@ -198,7 +198,7 @@ public class PlaylistServiceTest {
         user.setUserType(new UserType("userTypeId", "Premium"));
         BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
         String updatedPlaylist = playlistService.addMusicToPlaylist("12312312321", "userId", music1);
-        Assertions.assertEquals(updatedPlaylist, "Música adicionada com sucesso!");
+        Assertions.assertEquals("Música adicionada com sucesso!", updatedPlaylist);
     }
 
     @Test
@@ -230,7 +230,6 @@ public class PlaylistServiceTest {
             playlistService.removeMusicFromPlaylist("12312312321", "12321312312");
         } catch (MusicNotFoundException e) {
             Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.removeMusicFromPlaylist("12312312321", "12321312312"));
-            ;
         }
     }
 
