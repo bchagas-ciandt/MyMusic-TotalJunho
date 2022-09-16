@@ -61,7 +61,8 @@ public class PlaylistServiceTest {
     @Test
     @DisplayName("should throw MusicNotFoundException when music is not found")
     void findMusicById_shouldThrowMusicNotFoundException_WhenMusicNotFound() {
-        Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById("1232131232"));
+        Exception error = Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById("1232131232"));
+        Assertions.assertEquals("Música com esse id não existe", error.getMessage());
     }
 
     @Test
@@ -262,6 +263,14 @@ public class PlaylistServiceTest {
         BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
 
         Assertions.assertEquals("Música adicionada com sucesso!", playlistService.addMusicToPlaylist("12312312321", "userId", music6));
+    }
+
+
+    @Test
+    @DisplayName("should throw MusicNotFoundException when music not exist")
+    void shouldThrowMusicNotFoundException_WhenMusicNotExist() {
+        Exception error = Assertions.assertThrows(MusicNotFoundException.class, () -> playlistService.findMusicById("1232131232"));
+        Assertions.assertEquals("Música com esse id não existe", error.getMessage());
     }
 
 
