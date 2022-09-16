@@ -1,0 +1,29 @@
+version: 2.1 # version of the Circle CI pipeline
+
+jobs: # i can define my jobs to create my integration
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps: # i have a few steps in every job
+      - checkout # checkout to my source code
+      - run:
+          working_directory: /home/circleci/project/MyMusic # i defined where i'll run the following command in this folder
+          name: Install
+          command: mvn clean install
+      - run:
+          working_directory: /home/circleci/project/MyMusic
+          name: Validate
+          command: mvn -B validate
+      - run:
+          working_directory: /home/circleci/project/MyMusic
+          name: Compile
+          command: mvn -B compile
+      - run:
+          working_directory: /home/circleci/project/MyMusic
+          name: Test
+          command: mvn test
+
+workflows:
+  sample: # This is the name of the workflow. a workflow can run many jobs
+    jobs:
+      - build-and-test

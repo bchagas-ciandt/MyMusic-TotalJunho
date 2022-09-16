@@ -53,7 +53,7 @@ class PlaylistControllerTest {
     @Test
     void findPlaylistByIdShouldReturnStatus400WhenJSONIsInvalid() throws Exception {
 
-        MvcResult mvcResult =  this.mockMvc.perform(post("http://localhost:8080/api/v1/playlists/a39926f4-6acb-4497-884f-d4e5296/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musicas")).andExpect(status().isBadRequest()).andReturn();
+        MvcResult mvcResult =  this.mockMvc.perform(post("http://localhost:8080/api/v1/playlists/a39926f4-6acb-4497-884f-d4e5296/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musics")).andExpect(status().isBadRequest()).andReturn();
 
         assertTrue(mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8).contains("Formato JSON inválido, consultar documentação"));
 
@@ -66,7 +66,7 @@ class PlaylistControllerTest {
                 "     \"artist\": {\n       \"id\": \"string\", \n       \"name\": \"string\" \n      } \n" +
                 "  }\n";
 
-        this.mockMvc.perform(post("http://localhost:8080/api/v1/playlists/7ff43fef-2d9f-4842-a23a-4be8b35bf422/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musicas")
+        this.mockMvc.perform(post("http://localhost:8080/api/v1/playlists/7ff43fef-2d9f-4842-a23a-4be8b35bf422/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musics")
                 .contentType(MediaType.APPLICATION_JSON).content(jsonInput))
                 .andExpect(status().isOk());
 
@@ -89,7 +89,7 @@ class PlaylistControllerTest {
                 .thenThrow(PlaylistNotFoundException.class);
 
         given().accept(ContentType.JSON)
-                .when().post("http://localhost:8080/api/v1/playlists/7ff43fef-2d9f-4842-a23a-4be8b35bf42/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musicas", newMusic)
+                .when().post("http://localhost:8080/api/v1/playlists/7ff43fef-2d9f-4842-a23a-4be8b35bf42/dd444a81-9588-4e6b-9d3d-1f1036a6eaa1/musics", newMusic)
                 .then().statusCode(HttpStatus.BAD_REQUEST.value());
 
     }
@@ -110,7 +110,7 @@ class PlaylistControllerTest {
                 "     \"artist\": {\n       \"id\": \"artistId\", \n       \"name\": \"Name Artist\" \n      } \n" +
                 "  }";
 
-        RequestBuilder request = post("/api/v1/playlists/playlistId/userId/musicas")
+        RequestBuilder request = post("/api/v1/playlists/playlistId/userId/musics")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson);
 
@@ -128,7 +128,7 @@ class PlaylistControllerTest {
 
         this.service.removeMusicFromPlaylist(playlist, musica);
 
-        RequestBuilder request = put("/api/v1/playlists/playlistId/musicas/musicId");
+        RequestBuilder request = put("/api/v1/playlists/playlistId/musics/musicId");
 
         MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 

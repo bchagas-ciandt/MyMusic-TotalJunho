@@ -28,7 +28,7 @@ public class PlaylistController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
-    @PostMapping(path = "{playlistId}/{userId}/musicas")
+    @PostMapping(path = "{playlistId}/{userId}/musics")
     public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music music) {
         String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, music);
         return ResponseEntity.ok(addMusicToPlaylist);
@@ -40,7 +40,7 @@ public class PlaylistController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
-    @PutMapping (path = "{playlistId}/musicas/{musicId}")
+    @PutMapping (path = "{playlistId}/musics/{musicId}")
     public ResponseEntity<Void> removeMusicFromPlaylist(@PathVariable String playlistId, @PathVariable String musicId) {
         playlistService.removeMusicFromPlaylist(playlistId, musicId);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -53,7 +53,7 @@ public class PlaylistController {
     }
 
     @ApiOperation(value = "Retorna todas as playlists")
-    @GetMapping(path = "findAll")
+    @GetMapping
     public ResponseEntity<List<Playlist>> findAll() {
         return ResponseEntity.ok(playlistService.findAll());
     }
