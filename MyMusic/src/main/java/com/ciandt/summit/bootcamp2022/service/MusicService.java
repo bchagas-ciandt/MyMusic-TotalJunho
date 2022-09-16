@@ -5,6 +5,8 @@ import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.exception.EmptyListException;
 import com.ciandt.summit.bootcamp2022.exception.InvalidFilterException;
 import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
+import com.ciandt.summit.bootcamp2022.utils.ErrorMassage;
+import com.ciandt.summit.bootcamp2022.utils.LogMassage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,35 +27,35 @@ public class MusicService {
     @Cacheable("musicswithfilter")
     public ObjectDTO findMusicsByMusicNameOrArtistName(String filter) {
         if (filter.length() < 3) {
-            logger.error("Filtro com menos de 3 caracteres");
-            throw new InvalidFilterException("Filtro com menos de 3 caracteres");
+            logger.error(LogMassage.LOG_ERROR_INVALID_FILTER);
+            throw new InvalidFilterException(ErrorMassage.INVALID_FILTER_EXCEPTION);
         }
 
-        logger.info("Buscando músicas com o filtro: "+ filter);
+        logger.info(LogMassage.FINDING_MUSIC_BY_FILTER);
         List<Music> musics = musicRepository.findByNameArtistOrNameMusic(filter);
 
         emptyPlaylistShouldThrowException(musics);
 
         ObjectDTO objectDTO = ObjectDTO.builder().data(musics).build();
 
-        logger.info("Retornando músicas com o filtro: "+ filter);
+        logger.info(LogMassage.RETURNING_MUSIC_BY_FILTER);
         return objectDTO;
     }
+
     @Cacheable("allmusics")
-    public ObjectDTO findMusicsWithoutParameters(){
-        logger.info("Buscando músicas sem filtro");
+    public ObjectDTO findMusicsWithoutParameters() {
+        logger.info(LogMassage.FINDING_ALL_MUSICS);
         List<Music> musics = musicRepository.findAll();
         emptyPlaylistShouldThrowException(musics);
-        List<Music> listMusicsSorted = musics.stream().sorted((a1, a2)->a1.getArtist().getName()
+        List<Music> listMusicsSorted = musics.stream().sorted((a1, a2) -> a1.getArtist().getName()
                 .compareTo(a2.getArtist().getName())).collect(Collectors.toList());
-        ObjectDTO objectDTO = ObjectDTO.builder().data(listMusicsSorted).build();
-
-        return objectDTO;
+        return ObjectDTO.builder().data(listMusicsSorted).build();
     }
-    private void emptyPlaylistShouldThrowException(List<Music> musics){
+
+    private void emptyPlaylistShouldThrowException(List<Music> musics) {
         if (musics.isEmpty()) {
-            logger.error("Lista vazia para o filtro do parametro");
-            throw new EmptyListException("Não foi encontrada nenhuma música para esta busca.");
+            logger.error(LogMassage.LOG_ERROR_EMPTY_LIST);
+            throw new EmptyListException(ErrorMassage.EMPTY_LIST_EXCEPTION);
         }
     }
 }

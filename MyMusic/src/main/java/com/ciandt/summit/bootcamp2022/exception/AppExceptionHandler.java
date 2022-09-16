@@ -7,7 +7,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -19,129 +18,87 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponseMessage> handleAllException(Exception e,
                                                                              WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.INTERNAL_SERVER_ERROR.value()
-        );
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.INTERNAL_SERVER_ERROR);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(UnauthorizedRequestException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleUnauthorizedRequestException(UnauthorizedRequestException e,
                                                                                              WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.UNAUTHORIZED.value()
-        );
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(InvalidFilterException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleInvalidFilterException(InvalidFilterException e,
                                                                                        WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
-        return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
+        ExceptionResponseMessage exceptionResponseMessage400 = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>(exceptionResponseMessage400, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidIdException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleInvalidIdException(InvalidIdException e,
                                                                                    WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EmptyListException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleEmptyListException(EmptyListException e,
                                                                                    WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.NO_CONTENT.value()
-        );
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.NOT_FOUND);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NO_CONTENT);
     }
 
     @ExceptionHandler(MusicNotFoundException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleMusicNotFoundException(MusicNotFoundException e,
-                                                                                   WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+                                                                                       WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(PlaylistNotFoundException.class)
     public final ResponseEntity<ExceptionResponseMessage> handlePlaylistNotFoundException(PlaylistNotFoundException e,
-                                                                                       WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+                                                                                          WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(PayloadInvalidException.class)
     public final ResponseEntity<ExceptionResponseMessage> handlePayloadInvalidException(PayloadInvalidException e,
-                                                                                           WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+                                                                                        WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(MusicLimitReachedException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleMusicLimitReachedException(MusicLimitReachedException e,
-                                                                                          WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+                                                                                           WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
     public final ResponseEntity<ExceptionResponseMessage> handleUserNotFoundException(UserNotFoundException e,
-                                                                                           WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.NOT_FOUND.value()
-        );
+                                                                                      WebRequest request) {
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.NOT_FOUND);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(MusicAlreadyExistInPlaylist.class)
-    public final ResponseEntity<ExceptionResponseMessage> handleUserNotFoundException(MusicAlreadyExistInPlaylist e,
+    @ExceptionHandler(MusicAlreadyExistInPlaylistException.class)
+    public final ResponseEntity<ExceptionResponseMessage> handleUserNotFoundException(MusicAlreadyExistInPlaylistException e,
                                                                                       WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
-                new Date(),
-                e.getMessage(),
-                request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
-        );
+        ExceptionResponseMessage exceptionResponseMessage = exceptionResponseMessageBuilder(e, request, HttpStatus.BAD_REQUEST);
+
         return new ResponseEntity<>(exceptionResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
@@ -159,12 +116,16 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ExceptionResponseMessage exceptionResponseMessage = new ExceptionResponseMessage(
+
+        return this.handleExceptionInternal(ex, (Object) null, headers, status, request);
+    }
+
+    private ExceptionResponseMessage exceptionResponseMessageBuilder(Exception e, WebRequest request, HttpStatus status) {
+        return new ExceptionResponseMessage(
                 new Date(),
-                ex.getMessage(),
+                e.getMessage(),
                 request.getDescription(false),
-                HttpStatus.BAD_REQUEST.value()
+                status.value()
         );
-        return this.handleExceptionInternal(ex, (Object)null, headers, status, request);
     }
 }

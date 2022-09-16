@@ -30,7 +30,6 @@ public class SqlDialect extends Dialect {
         registerColumnType(Types.BINARY, "blob");
         registerColumnType(Types.VARBINARY, "blob");
         registerColumnType(Types.LONGVARBINARY, "blob");
-        // registerColumnType(Types.NULL, "null");
         registerColumnType(Types.BLOB, "blob");
         registerColumnType(Types.CLOB, "clob");
         registerColumnType(Types.BOOLEAN, "integer");
@@ -46,11 +45,11 @@ public class SqlDialect extends Dialect {
     }
 
     public boolean hasDataTypeInIdentityColumn() {
-        return false; // As specify in NHibernate dialect
+        return false;
     }
 
     public String getIdentityColumnString() {
-        // return "integer primary key autoincrement";
+
         return "integer";
     }
 

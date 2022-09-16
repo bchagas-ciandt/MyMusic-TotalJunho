@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class MusicAlreadyExistInPlaylist extends RuntimeException{
-    public MusicAlreadyExistInPlaylist(String message) {
+public class MusicAlreadyExistInPlaylistException extends RuntimeException {
+    public MusicAlreadyExistInPlaylistException(String message) {
         super(message);
     }
 }

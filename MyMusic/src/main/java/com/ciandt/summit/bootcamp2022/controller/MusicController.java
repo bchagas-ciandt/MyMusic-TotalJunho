@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,9 +32,9 @@ public class MusicController {
     @GetMapping
     public ResponseEntity<ObjectDTO> findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
         ObjectDTO objectDTO;
-        if(name.isEmpty()){
-             objectDTO = musicService.findMusicsWithoutParameters();
-        }else {
+        if (name.isEmpty()) {
+            objectDTO = musicService.findMusicsWithoutParameters();
+        } else {
             objectDTO = musicService.findMusicsByMusicNameOrArtistName(name);
         }
 

@@ -1,10 +1,13 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
-import com.ciandt.summit.bootcamp2022.DTO.ObjectDTO;
-import com.ciandt.summit.bootcamp2022.entity.*;
+import com.ciandt.summit.bootcamp2022.entity.Artist;
+import com.ciandt.summit.bootcamp2022.entity.Music;
+import com.ciandt.summit.bootcamp2022.entity.Playlist;
+import com.ciandt.summit.bootcamp2022.entity.User;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNotFoundException;
 import com.ciandt.summit.bootcamp2022.service.PlaylistService;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +21,16 @@ import org.springframework.test.web.servlet.RequestBuilder;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.standaloneSetup;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.mockito.BDDMockito.given;
 
 @WebMvcTest(PlaylistController.class)
 class PlaylistControllerTest {
@@ -94,6 +96,18 @@ class PlaylistControllerTest {
 
     }
 
+    @Test
+    void addMusicsToPlaylistShouldReturnErrorWhenPlaylistIsNotTheUser() throws PlaylistNotFoundException{
+
+        Music newMusic = new Music();
+        try {
+            this.service.addMusicToPlaylist("7ff43fef-2d9f-4842-a23a-4be8b35bf42","dd444a81-9588-4e6b-9d3d-1f1036a6eaa1", newMusic);
+        }catch (PlaylistNotFoundException e){
+            Exception error = Assertions.assertThrows(PlaylistNotFoundException.class,()->this.service.addMusicToPlaylist("7ff43fef-2d9f-4842-a23a-4be8b35bf42","dd444a81-9588-4e6b-9d3d-1f1036a6eaa1", newMusic));
+            Assertions.assertEquals("Não existe essa playlist no perfil do usuário", error.getMessage());
+        }
+
+    }
     @Test
     void addMusicFromPlaylistShouldReturnStatusOk() throws Exception {
 
