@@ -32,9 +32,9 @@ public class MusicController {
     @GetMapping
     public ResponseEntity<ObjectDTO> findMusicsByMusicNameOrArtistName(@RequestParam(required = false, name = "filtro") String name) {
         ObjectDTO objectDTO;
-        if(name.isEmpty()){
-             objectDTO = musicService.findMusicsWithoutParameters();
-        }else {
+        if (name.isEmpty()) {
+            objectDTO = musicService.findMusicsWithoutParameters();
+        } else {
             objectDTO = musicService.findMusicsByMusicNameOrArtistName(name);
         }
 

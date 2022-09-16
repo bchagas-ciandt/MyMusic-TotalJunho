@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Cacheable("userId")
-    public Optional<User> findUserById(String id){
+    public Optional<User> findUserById(String id) {
         idValidation(id);
         userExiste(id);
         logger.info("Buscando usuário por id.");
@@ -31,26 +32,28 @@ public class UserService {
     }
 
     @Cacheable("allUsers")
-    public List<User> findAllUsers(){
+    public List<User> findAllUsers() {
         logger.info("Buscando todos os usuários.");
         emptyUserListShouldTrowException(userRepository.findAll());
         return userRepository.findAll();
     }
 
     private void idValidation(String id) {
-        if (id == " " || id == null) {
+        if (Objects.equals(id, " ") || id == null) {
             logger.error("Id nulo ou em branco");
             throw new InvalidIdException("Id não não pode ser nulo ou branco");
         }
     }
-    private void userExiste(String id){
-        if(!userRepository.existsById(id)){
+
+    private void userExiste(String id) {
+        if (!userRepository.existsById(id)) {
             logger.error("Id não consta na base de dados");
             throw new UserNotFoundException("Usuário não encontrado na base de dados.");
         }
     }
-    private void emptyUserListShouldTrowException(List<User> useres){
-        if(useres.isEmpty()){
+
+    private void emptyUserListShouldTrowException(List<User> useres) {
+        if (useres.isEmpty()) {
             logger.error("Lista vazia para busca de usuários.");
             throw new EmptyListException("Não foi encontrado nenhum usuário para busca.");
         }

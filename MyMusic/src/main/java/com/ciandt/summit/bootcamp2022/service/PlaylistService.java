@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PlaylistService {
@@ -42,7 +43,7 @@ public class PlaylistService {
         Playlist userPlaylist = user.getPlaylists();
 
         logger.info("Buscando playlist por id");
-        Playlist playlist= findById(playlistId);
+        Playlist playlist = findById(playlistId);
 
         isUserPlaylist(userPlaylist, playlist);
 
@@ -56,6 +57,7 @@ public class PlaylistService {
 
         return "Música adicionada com sucesso!";
     }
+
     @CacheEvict(value = "playlists", allEntries = true)
     public void removeMusicFromPlaylist(String playlistId, String musicId) {
         idValidation(playlistId);
@@ -97,7 +99,7 @@ public class PlaylistService {
     }
 
     private void idValidation(String id) {
-        if (id == " " || id == null) {
+        if (Objects.equals(id, " ") || id == null) {
             logger.error("Id nulo ou em branco");
             throw new InvalidIdException("Id não não pode ser nulo ou branco");
         }
@@ -120,7 +122,7 @@ public class PlaylistService {
             playlist.getMusicas().add(music);
         } else {
             logger.info("Música já existe na playlist");
-            throw new MusicAlreadyExistInPlaylist("Música já existe na playlist");
+            throw new MusicAlreadyExistInPlaylistException("Música já existe na playlist");
         }
     }
 
@@ -133,24 +135,20 @@ public class PlaylistService {
             if (userMusics.size() < 5) {
                 addMusicToPlaylistIfMusicDoesnotExist(music, user.getPlaylists().getMusicas(), user.getPlaylists());
             } else {
-                throw new MusicLimitReachedException("Você atingiu o número máximo de músicas em sua playlist.Para adicionar mais músicas contrate o plano Premium.");
+                throw new MusicLimitReachedException("Você atingiu o número máximo de músicas em sua playlist. Para adicionar mais músicas contrate o plano Premium.");
             }
         }
     }
 
     private boolean isUserPremium(User user) {
         String tipoUsuario = user.getUserType().getDescription();
-        if (tipoUsuario.equalsIgnoreCase("premium")) {
-            return true;
-        }
-        return false;
+        return tipoUsuario.equalsIgnoreCase("premium");
     }
 
-    private boolean isUserPlaylist(Playlist p1, Playlist p2) {
+    private void isUserPlaylist(Playlist p1, Playlist p2) {
         if (!p1.getId().equals(p2.getId())) {
-            throw new PlaylistNotFoundException("Não existe essa playlist no perfil do usuario");
+            throw new PlaylistNotFoundException("Não existe essa playlist no perfil do usuário");
         }
-        return true;
     }
 
 }

@@ -29,8 +29,8 @@ public class PlaylistController {
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
     @PostMapping(path = "{playlistId}/{userId}/musics")
-    public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId,@PathVariable String userId ,@RequestBody Music newMusic) {
-        String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId,userId, newMusic);
+    public ResponseEntity<String> addMusicsToPlaylist(@PathVariable String playlistId, @PathVariable String userId, @RequestBody Music newMusic) {
+        String addMusicToPlaylist = playlistService.addMusicToPlaylist(playlistId, userId, newMusic);
         return ResponseEntity.ok(addMusicToPlaylist);
     }
 
@@ -40,7 +40,7 @@ public class PlaylistController {
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 401, message = "Não Autorizado")
     })
-    @PutMapping (path = "{playlistId}/musics/{musicId}")
+    @PutMapping(path = "{playlistId}/musics/{musicId}")
     public ResponseEntity<Void> removeMusicFromPlaylist(@PathVariable String playlistId, @PathVariable String musicId) {
         playlistService.removeMusicFromPlaylist(playlistId, musicId);
         return new ResponseEntity<>(HttpStatus.OK);

@@ -24,19 +24,18 @@ public class UserController {
     private UserService userService;
 
     @ApiOperation(value = "Busca usuário por id")
-    @GetMapping(path =  "{userId}")
-    public ResponseEntity<User> findUserById(@PathVariable String userId){
+    @GetMapping(path = "{userId}")
+    public ResponseEntity<User> findUserById(@PathVariable String userId) {
         Optional<User> userOptional = userService.findUserById(userId);
-        if (userOptional.isEmpty()){
+        if (userOptional.isEmpty()) {
             throw new UserNotFoundException("Usuário não encontrado.");
         }
-
         return ResponseEntity.ok(userOptional.get());
     }
 
     @ApiOperation(value = "Retorna todos os usuários")
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok(userService.findAllUsers());
     }
 }

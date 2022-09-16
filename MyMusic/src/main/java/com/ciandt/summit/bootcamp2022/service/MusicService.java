@@ -29,7 +29,7 @@ public class MusicService {
             throw new InvalidFilterException("Filtro com menos de 3 caracteres");
         }
 
-        logger.info("Buscando músicas com o filtro: "+ filter);
+        logger.info("Buscando músicas com o filtro: " + filter);
         List<Music> musics = musicRepository.findByNameArtistOrNameMusic(filter);
 
         emptyPlaylistShouldThrowException(musics);
@@ -39,16 +39,18 @@ public class MusicService {
         logger.info("Retornando músicas com o filtro: "+ filter);
         return objectDTO;
     }
+
     @Cacheable("allmusics")
-    public ObjectDTO findMusicsWithoutParameters(){
+    public ObjectDTO findMusicsWithoutParameters() {
         logger.info("Buscando músicas sem filtro");
         List<Music> musics = musicRepository.findAll();
         emptyPlaylistShouldThrowException(musics);
-        List<Music> listMusicsSorted = musics.stream().sorted((a1, a2)->a1.getArtist().getName()
+        List<Music> listMusicsSorted = musics.stream().sorted((a1, a2) -> a1.getArtist().getName()
                 .compareTo(a2.getArtist().getName())).collect(Collectors.toList());
         return ObjectDTO.builder().data(listMusicsSorted).build();
     }
-    private void emptyPlaylistShouldThrowException(List<Music> musics){
+
+    private void emptyPlaylistShouldThrowException(List<Music> musics) {
         if (musics.isEmpty()) {
             logger.error("Lista vazia para o filtro do parametro");
             throw new EmptyListException("Não foi encontrada nenhuma música para esta busca.");

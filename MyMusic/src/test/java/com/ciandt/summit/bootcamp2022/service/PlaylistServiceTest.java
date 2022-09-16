@@ -153,7 +153,7 @@ public class PlaylistServiceTest {
 
     @Test
     @DisplayName("Should throw MusicAlreadyExistInPlaylist when music already exist in playlist")
-    void addMusicToPlaylist_shouldThrow_MusicAlreadyExistInPlaylist_WhenMusicsExistsInPlaylist() throws MusicAlreadyExistInPlaylist {
+    void addMusicToPlaylist_shouldThrow_MusicAlreadyExistInPlaylist_WhenMusicsExistsInPlaylist() throws MusicAlreadyExistInPlaylistException {
         try{
             BDDMockito.when(playlistRepository.findById("123123123213")).thenReturn(Optional.of(playlist));
             BDDMockito.when(musicRepository.findById("123123123")).thenReturn(Optional.of(music2));
@@ -165,8 +165,8 @@ public class PlaylistServiceTest {
             BDDMockito.when(userRepository.findById("userId")).thenReturn(Optional.of(user));
             playlistService.addMusicToPlaylist("123123123213","userId", music2);
 
-        }catch (MusicAlreadyExistInPlaylist e){
-            Assertions.assertThrows(MusicAlreadyExistInPlaylist.class, () -> playlistService.addMusicToPlaylist("123123123213","userId", music2));
+        }catch (MusicAlreadyExistInPlaylistException e){
+            Assertions.assertThrows(MusicAlreadyExistInPlaylistException.class, () -> playlistService.addMusicToPlaylist("123123123213","userId", music2));
         }
 
     }
